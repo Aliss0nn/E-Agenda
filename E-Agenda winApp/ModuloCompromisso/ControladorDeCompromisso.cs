@@ -27,7 +27,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
         public override void Inserir()
         {         
             TelaCompromisso telaCompromisso = new TelaCompromisso();
-
+          
             DialogResult opcaoEscolhida = telaCompromisso.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)

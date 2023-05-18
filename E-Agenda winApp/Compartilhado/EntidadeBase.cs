@@ -8,6 +8,6 @@ namespace E_Agenda_winApp.Compartilhado
 {
     public abstract class EntidadeBase
     {
-        public int id = 1;
+        public int id;
     }
 }

@@ -48,6 +48,13 @@ namespace E_Agenda_winApp
             ConfigurarTelaPrincipal(controlador);
         }
 
+        private void compromissosMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorDeCompromisso(repositorioCompromisso);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
         private void ConfigurarToolTips(ControladorBase controlador)
         {
             btnInserir.ToolTipText = controlador.ToolTipInserir;
@@ -71,11 +78,6 @@ namespace E_Agenda_winApp
             controlador.Excluir();
         }
 
-        private void compromissosMenuItem_Click(object sender, EventArgs e)
-        {
-            controlador = new ControladorDeCompromisso(repositorioCompromisso);
-
-            ConfigurarTelaPrincipal(controlador);
-        }
+        
     }
 }

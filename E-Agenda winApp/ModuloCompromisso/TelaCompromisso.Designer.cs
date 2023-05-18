@@ -37,23 +37,24 @@
             CbContatos = new ComboBox();
             label4 = new Label();
             label5 = new Label();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
+            rdBtnRemoto = new RadioButton();
+            rdBtnPresencial = new RadioButton();
             txtRemoto = new TextBox();
             txtPresencial = new TextBox();
-            btnSalvar = new Button();
+            btnSalvarCompromisso = new Button();
             btnCancelar = new Button();
-            txtData = new TextBox();
-            txtInicio = new TextBox();
-            txtFinal = new TextBox();
             txtLocal = new TextBox();
             label6 = new Label();
+            dateTimeData = new DateTimePicker();
+            dateTimeInicial = new DateTimePicker();
+            dateTimeFinal = new DateTimePicker();
             SuspendLayout();
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(48, 45);
+            label1.Location = new Point(53, 32);
             label1.Name = "label1";
             label1.Size = new Size(18, 15);
             label1.TabIndex = 0;
@@ -61,8 +62,9 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(16, 76);
+            label2.Location = new Point(21, 63);
             label2.Name = "label2";
             label2.Size = new Size(50, 15);
             label2.TabIndex = 1;
@@ -70,22 +72,25 @@
             // 
             // txtId
             // 
-            txtId.Location = new Point(78, 37);
+            txtId.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            txtId.Location = new Point(83, 24);
             txtId.Name = "txtId";
             txtId.Size = new Size(100, 23);
             txtId.TabIndex = 2;
             // 
             // txtAssunto
             // 
-            txtAssunto.Location = new Point(78, 73);
+            txtAssunto.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            txtAssunto.Location = new Point(83, 60);
             txtAssunto.Name = "txtAssunto";
             txtAssunto.Size = new Size(311, 23);
             txtAssunto.TabIndex = 3;
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label3.AutoSize = true;
-            label3.Location = new Point(35, 116);
+            label3.Location = new Point(40, 103);
             label3.Name = "label3";
             label3.Size = new Size(31, 15);
             label3.TabIndex = 4;
@@ -93,26 +98,29 @@
             // 
             // checkBox1
             // 
+            checkBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(78, 201);
+            checkBox1.Location = new Point(90, 188);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(284, 19);
+            checkBox1.Size = new Size(277, 19);
             checkBox1.TabIndex = 6;
-            checkBox1.Text = "Deseja marcar um contanto neste compromisso?";
+            checkBox1.Text = "Deseja marcar um contato neste compromisso?";
             checkBox1.UseVisualStyleBackColor = true;
             // 
             // CbContatos
             // 
+            CbContatos.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             CbContatos.FormattingEnabled = true;
-            CbContatos.Location = new Point(78, 226);
+            CbContatos.Location = new Point(83, 213);
             CbContatos.Name = "CbContatos";
             CbContatos.Size = new Size(121, 23);
             CbContatos.TabIndex = 7;
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label4.AutoSize = true;
-            label4.Location = new Point(30, 159);
+            label4.Location = new Point(35, 146);
             label4.Name = "label4";
             label4.Size = new Size(36, 15);
             label4.TabIndex = 9;
@@ -120,121 +128,137 @@
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label5.AutoSize = true;
-            label5.Location = new Point(242, 159);
+            label5.Location = new Point(213, 146);
             label5.Name = "label5";
             label5.Size = new Size(50, 15);
             label5.TabIndex = 10;
             label5.Text = "Término";
             // 
-            // radioButton1
+            // rdBtnRemoto
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(46, 300);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(67, 19);
-            radioButton1.TabIndex = 12;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Remoto";
-            radioButton1.UseVisualStyleBackColor = true;
+            rdBtnRemoto.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            rdBtnRemoto.AutoSize = true;
+            rdBtnRemoto.Location = new Point(51, 287);
+            rdBtnRemoto.Name = "rdBtnRemoto";
+            rdBtnRemoto.Size = new Size(67, 19);
+            rdBtnRemoto.TabIndex = 12;
+            rdBtnRemoto.TabStop = true;
+            rdBtnRemoto.Text = "Remoto";
+            rdBtnRemoto.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rdBtnPresencial
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(35, 329);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(78, 19);
-            radioButton2.TabIndex = 13;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Presencial";
-            radioButton2.UseVisualStyleBackColor = true;
+            rdBtnPresencial.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            rdBtnPresencial.AutoSize = true;
+            rdBtnPresencial.Location = new Point(40, 316);
+            rdBtnPresencial.Name = "rdBtnPresencial";
+            rdBtnPresencial.Size = new Size(78, 19);
+            rdBtnPresencial.TabIndex = 13;
+            rdBtnPresencial.TabStop = true;
+            rdBtnPresencial.Text = "Presencial";
+            rdBtnPresencial.UseVisualStyleBackColor = true;
             // 
             // txtRemoto
             // 
-            txtRemoto.Location = new Point(139, 296);
+            txtRemoto.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            txtRemoto.Location = new Point(144, 283);
             txtRemoto.Name = "txtRemoto";
             txtRemoto.Size = new Size(169, 23);
             txtRemoto.TabIndex = 14;
             // 
             // txtPresencial
             // 
-            txtPresencial.Location = new Point(139, 325);
+            txtPresencial.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            txtPresencial.Location = new Point(144, 312);
             txtPresencial.Name = "txtPresencial";
             txtPresencial.Size = new Size(169, 23);
             txtPresencial.TabIndex = 15;
             // 
-            // btnSalvar
+            // btnSalvarCompromisso
             // 
-            btnSalvar.Location = new Point(314, 375);
-            btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(75, 32);
-            btnSalvar.TabIndex = 16;
-            btnSalvar.Text = "Salvar";
-            btnSalvar.UseVisualStyleBackColor = true;
-            btnSalvar.Click += btnSalvar_Click;
+            btnSalvarCompromisso.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSalvarCompromisso.DialogResult = DialogResult.OK;
+            btnSalvarCompromisso.Location = new Point(329, 365);
+            btnSalvarCompromisso.Name = "btnSalvarCompromisso";
+            btnSalvarCompromisso.Size = new Size(75, 32);
+            btnSalvarCompromisso.TabIndex = 16;
+            btnSalvarCompromisso.Text = "Salvar";
+            btnSalvarCompromisso.UseVisualStyleBackColor = true;
+            btnSalvarCompromisso.Click += btnSalvarCompromisso_Click;
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(395, 375);
+            btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnCancelar.DialogResult = DialogResult.Cancel;
+            btnCancelar.Location = new Point(410, 365);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 32);
             btnCancelar.TabIndex = 17;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // txtData
-            // 
-            txtData.Location = new Point(78, 113);
-            txtData.Name = "txtData";
-            txtData.Size = new Size(311, 23);
-            txtData.TabIndex = 18;
-            // 
-            // txtInicio
-            // 
-            txtInicio.Location = new Point(79, 151);
-            txtInicio.Name = "txtInicio";
-            txtInicio.Size = new Size(145, 23);
-            txtInicio.TabIndex = 19;
-            // 
-            // txtFinal
-            // 
-            txtFinal.Location = new Point(301, 151);
-            txtFinal.Name = "txtFinal";
-            txtFinal.Size = new Size(140, 23);
-            txtFinal.TabIndex = 20;
-            // 
             // txtLocal
             // 
-            txtLocal.Location = new Point(139, 267);
+            txtLocal.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            txtLocal.Location = new Point(144, 253);
             txtLocal.Name = "txtLocal";
             txtLocal.Size = new Size(169, 23);
             txtLocal.TabIndex = 21;
             // 
             // label6
             // 
+            label6.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label6.AutoSize = true;
-            label6.Location = new Point(69, 275);
+            label6.Location = new Point(74, 262);
             label6.Name = "label6";
             label6.Size = new Size(35, 15);
             label6.TabIndex = 22;
             label6.Text = "Local";
             // 
+            // dateTimeData
+            // 
+            dateTimeData.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            dateTimeData.Location = new Point(83, 97);
+            dateTimeData.Name = "dateTimeData";
+            dateTimeData.Size = new Size(245, 23);
+            dateTimeData.TabIndex = 23;
+            // 
+            // dateTimeInicial
+            // 
+            dateTimeInicial.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            dateTimeInicial.CustomFormat = "hh:mm";
+            dateTimeInicial.Location = new Point(74, 140);
+            dateTimeInicial.Name = "dateTimeInicial";
+            dateTimeInicial.Size = new Size(109, 23);
+            dateTimeInicial.TabIndex = 24;
+            // 
+            // dateTimeFinal
+            // 
+            dateTimeFinal.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            dateTimeFinal.CustomFormat = "HH:mm";
+            dateTimeFinal.Location = new Point(269, 140);
+            dateTimeFinal.Name = "dateTimeFinal";
+            dateTimeFinal.Size = new Size(114, 23);
+            dateTimeFinal.TabIndex = 25;
+            // 
             // TelaCompromisso
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(530, 419);
+            ClientSize = new Size(545, 409);
+            Controls.Add(dateTimeFinal);
+            Controls.Add(dateTimeInicial);
+            Controls.Add(dateTimeData);
             Controls.Add(label6);
             Controls.Add(txtLocal);
-            Controls.Add(txtFinal);
-            Controls.Add(txtInicio);
-            Controls.Add(txtData);
             Controls.Add(btnCancelar);
-            Controls.Add(btnSalvar);
+            Controls.Add(btnSalvarCompromisso);
             Controls.Add(txtPresencial);
             Controls.Add(txtRemoto);
-            Controls.Add(radioButton2);
-            Controls.Add(radioButton1);
+            Controls.Add(rdBtnPresencial);
+            Controls.Add(rdBtnRemoto);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(CbContatos);
@@ -264,16 +288,16 @@
         private ComboBox CbContatos;
         private Label label4;
         private Label label5;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
+        private RadioButton rdBtnRemoto;
+        private RadioButton rdBtnPresencial;
         private TextBox txtRemoto;
         private TextBox txtPresencial;
-        private Button btnSalvar;
+        private Button btnSalvarCompromisso;
         private Button btnCancelar;
-        private TextBox txtData;
-        private TextBox txtInicio;
-        private TextBox txtFinal;
         private TextBox txtLocal;
         private Label label6;
+        private DateTimePicker dateTimeData;
+        private DateTimePicker dateTimeInicial;
+        private DateTimePicker dateTimeFinal;
     }
 }

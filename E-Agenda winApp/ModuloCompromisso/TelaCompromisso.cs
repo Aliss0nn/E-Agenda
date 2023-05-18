@@ -17,31 +17,51 @@ namespace E_Agenda_winApp.ModuloCompromisso
     {
         private Compromisso compromisso;
 
+        public List<Contato> contatos;
+
         public TelaCompromisso()
         {
             InitializeComponent();
+            ConfigurarData(dateTimeInicial);
+            ConfigurarData(dateTimeFinal);
+
         }
+
         public Compromisso Compromisso
         {
             set
             {
                 txtId.Text = value.id.ToString();
                 txtAssunto.Text = value.assunto;
+                txtLocal.Text = value.local;
+                dateTimeInicial.Value = value.horaFinal;
+                dateTimeFinal.Value = value.horaFinal;
+                dateTimeData.Value = value.data;             
             }
             get
             {
                 return compromisso;
             }
         }
-        private void btnSalvar_Click(object sender, EventArgs e)
+
+        private void ConfigurarData(DateTimePicker data)
+        {
+            data.Format = DateTimePickerFormat.Custom;
+            data.CustomFormat = "HH:mm";
+            data.ShowUpDown = true;
+        }
+
+        public void btnSalvarCompromisso_Click(object sender, EventArgs e)
         {
             string assunto = txtAssunto.Text;
             string local = txtLocal.Text;
-            string data = txtData.Text;
-            string horaFinal = txtFinal.Text;
-            string horaInicial = txtInicio.Text;
+            DateTime data = dateTimeData.Value;
+            DateTime horaInicial = dateTimeInicial.Value;
+            DateTime horaFinal = dateTimeFinal.Value;
 
-            compromisso = new Compromisso(assunto,local,data,horaInicial,horaFinal);
+            Contato contato = contatos.Find(x => x.nome == CbContatos.SelectedItem);
+
+            compromisso = new Compromisso(assunto, local, data, horaInicial, horaFinal, contato);
         }
     }
 }
