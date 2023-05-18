@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace E_Agenda_winApp.ModuloCompromisso
 {
     public partial class TelaFiltradorForm : Form
-    {
+    {                  
         public DateTime DataInicial
         {
             get
@@ -35,5 +35,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
             this.dateTimeInicio.MinDate = DateTime.Now;
             this.dateTimeFinal.MinDate = DateTime.Now;
         }
+
+
     }
 }

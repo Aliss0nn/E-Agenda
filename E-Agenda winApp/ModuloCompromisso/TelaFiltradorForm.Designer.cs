@@ -34,68 +34,108 @@
             dateTimeFinal = new DateTimePicker();
             btnFiltrar = new Button();
             btnCancelar = new Button();
+            rdbTodos = new RadioButton();
+            rdbPassados = new RadioButton();
+            rdbFuturos = new RadioButton();
             SuspendLayout();
             // 
             // lbInicio
             // 
             lbInicio.AutoSize = true;
-            lbInicio.Location = new Point(164, 42);
+            lbInicio.Location = new Point(56, 162);
             lbInicio.Name = "lbInicio";
-            lbInicio.Size = new Size(36, 15);
+            lbInicio.Size = new Size(79, 15);
             lbInicio.TabIndex = 0;
-            lbInicio.Text = "Inicio";
+            lbInicio.Text = "Data de Inicio";
             // 
             // lblFinal
             // 
             lblFinal.AutoSize = true;
-            lblFinal.Location = new Point(462, 42);
+            lblFinal.Location = new Point(330, 162);
             lblFinal.Name = "lblFinal";
-            lblFinal.Size = new Size(32, 15);
+            lblFinal.Size = new Size(59, 15);
             lblFinal.TabIndex = 1;
-            lblFinal.Text = "Final";
+            lblFinal.Text = "Data Final";
             // 
             // dateTimeInicio
             // 
-            dateTimeInicio.Location = new Point(65, 78);
+            dateTimeInicio.Anchor = AnchorStyles.None;
+            dateTimeInicio.Location = new Point(56, 199);
             dateTimeInicio.Name = "dateTimeInicio";
             dateTimeInicio.Size = new Size(250, 23);
             dateTimeInicio.TabIndex = 2;
             // 
             // dateTimeFinal
             // 
-            dateTimeFinal.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            dateTimeFinal.Location = new Point(360, 78);
+            dateTimeFinal.Anchor = AnchorStyles.None;
+            dateTimeFinal.Location = new Point(330, 199);
             dateTimeFinal.Name = "dateTimeFinal";
-            dateTimeFinal.Size = new Size(255, 23);
+            dateTimeFinal.Size = new Size(260, 23);
             dateTimeFinal.TabIndex = 3;
             // 
             // btnFiltrar
             // 
-            btnFiltrar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnFiltrar.Anchor = AnchorStyles.None;
             btnFiltrar.DialogResult = DialogResult.OK;
-            btnFiltrar.Location = new Point(223, 156);
+            btnFiltrar.Location = new Point(175, 241);
             btnFiltrar.Name = "btnFiltrar";
-            btnFiltrar.Size = new Size(86, 38);
+            btnFiltrar.Size = new Size(118, 38);
             btnFiltrar.TabIndex = 4;
             btnFiltrar.Text = "Filtrar";
             btnFiltrar.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
-            btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnCancelar.Anchor = AnchorStyles.None;
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(340, 156);
+            btnCancelar.Location = new Point(330, 241);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(95, 38);
+            btnCancelar.Size = new Size(114, 38);
             btnCancelar.TabIndex = 5;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // rdbTodos
+            // 
+            rdbTodos.AutoSize = true;
+            rdbTodos.Location = new Point(56, 35);
+            rdbTodos.Name = "rdbTodos";
+            rdbTodos.Size = new Size(206, 19);
+            rdbTodos.TabIndex = 6;
+            rdbTodos.TabStop = true;
+            rdbTodos.Text = "Visualizar Todos os Compromissos";
+            rdbTodos.UseVisualStyleBackColor = true;
+            // 
+            // rdbPassados
+            // 
+            rdbPassados.AutoSize = true;
+            rdbPassados.Location = new Point(56, 76);
+            rdbPassados.Name = "rdbPassados";
+            rdbPassados.Size = new Size(273, 19);
+            rdbPassados.TabIndex = 7;
+            rdbPassados.TabStop = true;
+            rdbPassados.Text = "Visualizar Somente os Compromissos Passados";
+            rdbPassados.UseVisualStyleBackColor = true;
+            // 
+            // rdbFuturos
+            // 
+            rdbFuturos.AutoSize = true;
+            rdbFuturos.Location = new Point(56, 114);
+            rdbFuturos.Name = "rdbFuturos";
+            rdbFuturos.Size = new Size(265, 19);
+            rdbFuturos.TabIndex = 8;
+            rdbFuturos.TabStop = true;
+            rdbFuturos.Text = "Visualizar Somente os Compromissos Futuros";
+            rdbFuturos.UseVisualStyleBackColor = true;
             // 
             // TelaFiltradorForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(659, 235);
+            ClientSize = new Size(614, 352);
+            Controls.Add(rdbFuturos);
+            Controls.Add(rdbPassados);
+            Controls.Add(rdbTodos);
             Controls.Add(btnCancelar);
             Controls.Add(btnFiltrar);
             Controls.Add(dateTimeFinal);
@@ -120,5 +160,8 @@
         private DateTimePicker dateTimeFinal;
         private Button btnFiltrar;
         private Button btnCancelar;
+        private RadioButton rdbTodos;
+        private RadioButton rdbPassados;
+        private RadioButton rdbFuturos;
     }
 }
