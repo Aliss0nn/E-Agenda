@@ -50,7 +50,7 @@ namespace E_Agenda_winApp
 
         private void compromissosMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorDeCompromisso(repositorioCompromisso);
+            controlador = new ControladorDeCompromisso(repositorioCompromisso,repositorioContato);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -60,6 +60,7 @@ namespace E_Agenda_winApp
             btnInserir.ToolTipText = controlador.ToolTipInserir;
             btnEditar.ToolTipText = controlador.ToolTipEditar;
             btnExcluir.ToolTipText = controlador.ToolTipExcluir;
+            btnFiltrar.ToolTipText = controlador.ToolTipFiltrar;
         }
 
 
@@ -78,6 +79,9 @@ namespace E_Agenda_winApp
             controlador.Excluir();
         }
 
-        
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            controlador.Filtrar();
+        }
     }
 }

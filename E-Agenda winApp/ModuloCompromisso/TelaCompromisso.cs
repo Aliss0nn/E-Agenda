@@ -36,7 +36,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
                 txtLocal.Text = value.local;
                 dateTimeInicial.Value = value.horaFinal;
                 dateTimeFinal.Value = value.horaFinal;
-                dateTimeData.Value = value.data;             
+                dateTimeData.Value = value.data;
             }
             get
             {
@@ -49,6 +49,16 @@ namespace E_Agenda_winApp.ModuloCompromisso
             data.Format = DateTimePickerFormat.Custom;
             data.CustomFormat = "HH:mm";
             data.ShowUpDown = true;
+        }
+
+        public void ObterContatos(List<Contato> contatos)
+        {
+            this.contatos = contatos;
+
+            foreach(Contato c in contatos)
+            {
+                CbContatos.Items.Add(c);
+            }
         }
 
         public void btnSalvarCompromisso_Click(object sender, EventArgs e)

@@ -22,7 +22,9 @@ namespace E_Agenda_winApp.ModuloTarefa
 
         public override string ToolTipEditar { get { return "Editar Tarefa Existente"; } }
 
-        public override string ToolTipExcluir { get { return "Excluir Tarefa Existente"; } }     
+        public override string ToolTipExcluir { get { return "Excluir Tarefa Existente"; } }
+
+        public override string ToolTipFiltrar { get { return "Filtrar Tarefa Existente"; } }
 
         public override void Inserir()
         {
@@ -96,6 +98,9 @@ namespace E_Agenda_winApp.ModuloTarefa
             return "Cadastro de Tarefas";
         }
 
-        
+        public override void Filtrar()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

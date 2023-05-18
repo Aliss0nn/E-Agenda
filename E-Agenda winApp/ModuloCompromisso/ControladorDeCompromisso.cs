@@ -12,10 +12,12 @@ namespace E_Agenda_winApp.ModuloCompromisso
     {
          private RepositorioCompromisso repositorioCompromisso;
          private ListaCompromissoControl listaCompromisso;
+         private RepositorioContato repositorioContato;
 
-        public ControladorDeCompromisso(RepositorioCompromisso repositorioCompromisso)
+        public ControladorDeCompromisso(RepositorioCompromisso repositorioCompromisso, RepositorioContato repositorioContato)
         {
             this.repositorioCompromisso = repositorioCompromisso;
+            this.repositorioContato = repositorioContato;
         }
 
         public override string ToolTipInserir { get { return "Inserir novo Compromisso"; } }
@@ -24,10 +26,13 @@ namespace E_Agenda_winApp.ModuloCompromisso
 
         public override string ToolTipExcluir { get { return "Excluir Compromisso Existente"; } }
 
+        public override string ToolTipFiltrar { get { return "Filtrar Compromisso Existente"; } }
+
         public override void Inserir()
         {         
             TelaCompromisso telaCompromisso = new TelaCompromisso();
           
+            telaCompromisso.ObterContatos(this.repositorioContato.SelecionarTodos());
             DialogResult opcaoEscolhida = telaCompromisso.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)
@@ -50,6 +55,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
         public override void Editar()
         {           
             TelaCompromisso telaCompromisso = new TelaCompromisso();
+            telaCompromisso.ObterContatos(this.repositorioContato.SelecionarTodos());
 
             telaCompromisso.Compromisso = listaCompromisso.ObterCompromissoSelecionado();
 
@@ -97,6 +103,11 @@ namespace E_Agenda_winApp.ModuloCompromisso
         public override string ObterTipoCadastro()
         {
             return "Cadastro de Compromissos";
+        }
+
+        public override void Filtrar()
+        {
+            throw new NotImplementedException();
         }
     }
 }

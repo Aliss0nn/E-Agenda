@@ -111,7 +111,7 @@
             // 
             CbContatos.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             CbContatos.FormattingEnabled = true;
-            CbContatos.Location = new Point(83, 213);
+            CbContatos.Location = new Point(90, 213);
             CbContatos.Name = "CbContatos";
             CbContatos.Size = new Size(121, 23);
             CbContatos.TabIndex = 7;
@@ -140,7 +140,7 @@
             // 
             rdBtnRemoto.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             rdBtnRemoto.AutoSize = true;
-            rdBtnRemoto.Location = new Point(51, 287);
+            rdBtnRemoto.Location = new Point(42, 291);
             rdBtnRemoto.Name = "rdBtnRemoto";
             rdBtnRemoto.Size = new Size(67, 19);
             rdBtnRemoto.TabIndex = 12;
@@ -211,7 +211,7 @@
             // 
             label6.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label6.AutoSize = true;
-            label6.Location = new Point(74, 262);
+            label6.Location = new Point(74, 261);
             label6.Name = "label6";
             label6.Size = new Size(35, 15);
             label6.TabIndex = 22;
