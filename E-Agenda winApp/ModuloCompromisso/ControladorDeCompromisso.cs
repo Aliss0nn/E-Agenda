@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace E_Agenda_winApp.ModuloCompromisso
 {
-    public class ControladorDeCompromisso : ControladorBase
+    public class ControladorDeCompromisso : ControladorBase, Filtrador
     {
          private RepositorioCompromisso repositorioCompromisso;
          private ListaCompromissoControl listaCompromisso;
@@ -105,9 +105,24 @@ namespace E_Agenda_winApp.ModuloCompromisso
             return "Cadastro de Compromissos";
         }
 
-        public override void Filtrar()
+        public void Filtrar()
         {
-            throw new NotImplementedException();
+            if (listaCompromisso == null)
+                listaCompromisso = new ListaCompromissoControl();
+
+           TelaFiltradorForm telaFiltrador = new TelaFiltradorForm();
+
+            DialogResult opcaoEscolhida = telaFiltrador.ShowDialog();
+
+            if (opcaoEscolhida == DialogResult.OK)
+            {
+                Predicate<Compromisso> periodo = c => c.data > telaFiltrador.DataInicial
+                && c.data <= telaFiltrador.DataFinal;
+
+                List<Compromisso> compromissos = repositorioCompromisso.SelecionarAlternativa(periodo);
+
+                listaCompromisso.AtualizarRegistros(compromissos);
+            }
         }
     }
 }

@@ -41,9 +41,14 @@ namespace E_Agenda_winApp.ModuloCompromisso
             return compromissos.FirstOrDefault(x => id == id);
         }
 
-        internal void Excluir(Compromisso compromisso)
+        public void Excluir(Compromisso compromisso)
         {
             compromissos.Remove(compromisso);
+        }
+
+        public List<Compromisso> SelecionarAlternativa(Predicate<Compromisso> periodo)
+        {
+            return compromissos.FindAll(periodo);
         }
     }
 }

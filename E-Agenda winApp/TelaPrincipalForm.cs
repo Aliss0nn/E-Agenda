@@ -81,7 +81,11 @@ namespace E_Agenda_winApp
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-            controlador.Filtrar();
+            if(controlador is Filtrador)
+            {
+                Filtrador filtrador = (Filtrador)controlador;
+                filtrador.Filtrar();
+            }
         }
     }
 }

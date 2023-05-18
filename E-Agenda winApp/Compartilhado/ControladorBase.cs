@@ -23,6 +23,6 @@ namespace E_Agenda_winApp.Compartilhado
        
         public abstract void Excluir();
 
-        public abstract void Filtrar();
+        
     }
 }
