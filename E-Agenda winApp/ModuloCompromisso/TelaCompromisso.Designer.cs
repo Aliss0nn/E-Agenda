@@ -130,7 +130,7 @@
             // 
             label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label5.AutoSize = true;
-            label5.Location = new Point(213, 146);
+            label5.Location = new Point(237, 146);
             label5.Name = "label5";
             label5.Size = new Size(50, 15);
             label5.TabIndex = 10;
@@ -231,16 +231,16 @@
             dateTimeInicial.CustomFormat = "hh:mm";
             dateTimeInicial.Location = new Point(74, 140);
             dateTimeInicial.Name = "dateTimeInicial";
-            dateTimeInicial.Size = new Size(109, 23);
+            dateTimeInicial.Size = new Size(133, 23);
             dateTimeInicial.TabIndex = 24;
             // 
             // dateTimeFinal
             // 
             dateTimeFinal.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             dateTimeFinal.CustomFormat = "HH:mm";
-            dateTimeFinal.Location = new Point(269, 140);
+            dateTimeFinal.Location = new Point(302, 140);
             dateTimeFinal.Name = "dateTimeFinal";
-            dateTimeFinal.Size = new Size(114, 23);
+            dateTimeFinal.Size = new Size(118, 23);
             dateTimeFinal.TabIndex = 25;
             // 
             // TelaCompromisso

@@ -43,6 +43,7 @@
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             btnFiltrar = new ToolStripButton();
+            btnItens = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             labelTipoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
@@ -124,7 +125,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, btnFiltrar, toolStripSeparator1, labelTipoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, btnFiltrar, btnItens, toolStripSeparator1, labelTipoCadastro });
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(808, 37);
@@ -174,6 +175,16 @@
             btnFiltrar.Size = new Size(23, 34);
             btnFiltrar.Text = "Flitrar";
             btnFiltrar.Click += btnFiltrar_Click;
+            // 
+            // btnItens
+            // 
+            btnItens.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnItens.Image = Properties.Resources.place_item_FILL0_wght400_GRAD0_opsz48;
+            btnItens.ImageTransparentColor = Color.Magenta;
+            btnItens.Name = "btnItens";
+            btnItens.Size = new Size(23, 34);
+            btnItens.Text = "Itens";
+            btnItens.Click += btnItens_Click;
             // 
             // toolStripSeparator1
             // 
@@ -240,5 +251,6 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripLabel labelTipoCadastro;
         private ToolStripButton btnFiltrar;
+        private ToolStripButton btnItens;
     }
 }

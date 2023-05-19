@@ -29,10 +29,9 @@ namespace E_Agenda_winApp.ModuloTarefa
         public void Editar(Tarefa tarefa)
         {          
             Tarefa tarefaSelecionada = SelecionarPorId(tarefa.id);
-          
-            tarefaSelecionada.nome = tarefa.nome;
+                   
+            tarefaSelecionada.nome = tarefa.nome;  
             tarefaSelecionada.prioridade = tarefa.prioridade;
-
         }
 
         public Tarefa SelecionarPorId(int id)

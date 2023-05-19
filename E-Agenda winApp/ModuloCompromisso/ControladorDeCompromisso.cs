@@ -28,6 +28,8 @@ namespace E_Agenda_winApp.ModuloCompromisso
 
         public override string ToolTipFiltrar { get { return "Filtrar Compromisso Existente"; } }
 
+        public override string ToolTipAdicionaritens => throw new NotImplementedException();
+
         public override void Inserir()
         {         
             TelaCompromisso telaCompromisso = new TelaCompromisso();
@@ -123,6 +125,11 @@ namespace E_Agenda_winApp.ModuloCompromisso
 
                 listaCompromisso.AtualizarRegistros(compromissos);
             }
+        }
+
+        public override void AdicionarItens()
+        {
+            throw new NotImplementedException();
         }
     }
 }

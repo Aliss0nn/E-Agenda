@@ -36,13 +36,17 @@
             label2 = new Label();
             label1 = new Label();
             txtPrioridade = new TextBox();
+            dtInicio = new DateTimePicker();
+            dtFinal = new DateTimePicker();
+            label3 = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // btnCancelar
             // 
             btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(406, 246);
+            btnCancelar.Location = new Point(509, 329);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(82, 35);
             btnCancelar.TabIndex = 1;
@@ -53,7 +57,7 @@
             // 
             btnSalvar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalvar.DialogResult = DialogResult.OK;
-            btnSalvar.Location = new Point(301, 246);
+            btnSalvar.Location = new Point(404, 329);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(86, 35);
             btnSalvar.TabIndex = 2;
@@ -74,7 +78,7 @@
             // 
             txtId.Location = new Point(108, 9);
             txtId.Name = "txtId";
-            txtId.Size = new Size(77, 23);
+            txtId.Size = new Size(38, 23);
             txtId.TabIndex = 4;
             // 
             // txtNomeDaTarefa
@@ -109,11 +113,47 @@
             txtPrioridade.Size = new Size(369, 23);
             txtPrioridade.TabIndex = 9;
             // 
+            // dtInicio
+            // 
+            dtInicio.Location = new Point(56, 170);
+            dtInicio.Name = "dtInicio";
+            dtInicio.Size = new Size(254, 23);
+            dtInicio.TabIndex = 10;
+            // 
+            // dtFinal
+            // 
+            dtFinal.Location = new Point(341, 170);
+            dtFinal.Name = "dtFinal";
+            dtFinal.Size = new Size(261, 23);
+            dtFinal.TabIndex = 11;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(108, 131);
+            label3.Name = "label3";
+            label3.Size = new Size(86, 15);
+            label3.TabIndex = 12;
+            label3.Text = "Inicio da Tarefa";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(395, 131);
+            label4.Name = "label4";
+            label4.Size = new Size(82, 15);
+            label4.TabIndex = 13;
+            label4.Text = "Final da Tarefa";
+            // 
             // TelaTarefa
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(523, 304);
+            ClientSize = new Size(626, 387);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(dtFinal);
+            Controls.Add(dtInicio);
             Controls.Add(txtPrioridade);
             Controls.Add(label1);
             Controls.Add(label2);
@@ -125,6 +165,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaTarefa";
+            ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Tarefas";
             ResumeLayout(false);
@@ -141,5 +182,9 @@
         private Label label2;
         private Label label1;
         private TextBox txtPrioridade;
+        private DateTimePicker dtInicio;
+        private DateTimePicker dtFinal;
+        private Label label3;
+        private Label label4;
     }
 }

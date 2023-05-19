@@ -55,7 +55,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
         {
             this.contatos = contatos;
 
-            foreach(Contato c in contatos)
+            foreach (Contato c in contatos)
             {
                 CbContatos.Items.Add(c);
             }

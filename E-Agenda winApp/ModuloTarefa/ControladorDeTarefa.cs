@@ -1,10 +1,4 @@
 ﻿using E_Agenda_winApp.Compartilhado;
-using E_Agenda_winApp.ModuloContato;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace E_Agenda_winApp.ModuloTarefa
 {
@@ -25,6 +19,8 @@ namespace E_Agenda_winApp.ModuloTarefa
         public override string ToolTipExcluir { get { return "Excluir Tarefa Existente"; } }
 
         public override string ToolTipFiltrar { get { return "Filtrar Tarefa Existente"; } }
+
+        public override string ToolTipAdicionaritens { get { return "Ver itens"; } }
 
         public override void Inserir()
         {
@@ -98,6 +94,31 @@ namespace E_Agenda_winApp.ModuloTarefa
             return "Cadastro de Tarefas";
         }
 
-        
+        public override void AdicionarItens()
+        {
+            TelaItens telaItem = new TelaItens();
+
+            Tarefa tarefaSelecionada = listagemDeTarefa.ObterTarefaSelecionada();
+
+            if (tarefaSelecionada == null)
+            {
+                MessageBox.Show("Uma tarefa deve estar selecionada!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            telaItem.LimparTela();
+
+            foreach (Itens item in tarefaSelecionada.listaItens)
+            {
+                telaItem.AdicionarItem(item);
+            }
+
+            if (telaItem.ShowDialog() == DialogResult.OK)
+            {
+                Itens item = telaItem.Itens;
+
+                tarefaSelecionada.listaItens.Add(item);
+            }
+        }
     }
 }
