@@ -229,6 +229,7 @@
             // 
             dateTimeInicial.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             dateTimeInicial.CustomFormat = "hh:mm";
+            dateTimeInicial.Format = DateTimePickerFormat.Time;
             dateTimeInicial.Location = new Point(74, 140);
             dateTimeInicial.Name = "dateTimeInicial";
             dateTimeInicial.Size = new Size(133, 23);
@@ -238,6 +239,7 @@
             // 
             dateTimeFinal.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             dateTimeFinal.CustomFormat = "HH:mm";
+            dateTimeFinal.Format = DateTimePickerFormat.Time;
             dateTimeFinal.Location = new Point(302, 140);
             dateTimeFinal.Name = "dateTimeFinal";
             dateTimeFinal.Size = new Size(118, 23);
@@ -272,6 +274,7 @@
             MinimizeBox = false;
             Name = "TelaCompromisso";
             ShowIcon = false;
+            ShowInTaskbar = false;
             Text = "TelaCompromisso";
             ResumeLayout(false);
             PerformLayout();

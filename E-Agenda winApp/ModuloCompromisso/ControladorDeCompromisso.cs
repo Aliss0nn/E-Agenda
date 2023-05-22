@@ -28,7 +28,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
 
         public override string ToolTipFiltrar { get { return "Filtrar Compromisso Existente"; } }
 
-        public override string ToolTipAdicionaritens => throw new NotImplementedException();
+        public override string ToolTipAdicionaritens { get { return "Adicionar Itens"; } }
 
         public override void Inserir()
         {         

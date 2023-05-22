@@ -20,7 +20,7 @@ namespace E_Agenda_winApp.ModuloContato
 
         public override string ToolTipFiltrar { get { return "Filtrar Contato Existente"; } }
 
-        public override string ToolTipAdicionaritens => throw new NotImplementedException();
+        public override string ToolTipAdicionaritens { get { return "Adicionar Itens"; } }
 
         public override void Inserir()
         {

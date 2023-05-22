@@ -34,7 +34,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
                 txtId.Text = value.id.ToString();
                 txtAssunto.Text = value.assunto;
                 txtLocal.Text = value.local;
-                dateTimeInicial.Value = value.horaFinal;
+                dateTimeInicial.Value = value.horaInicio;
                 dateTimeFinal.Value = value.horaFinal;
                 dateTimeData.Value = value.data;
             }
