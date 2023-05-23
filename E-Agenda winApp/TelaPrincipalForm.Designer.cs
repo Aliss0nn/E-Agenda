@@ -37,7 +37,6 @@
             despesasMenuItem1 = new ToolStripMenuItem();
             categoriasMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
-            toolStripStatusLabel1 = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
             btnInserir = new ToolStripButton();
             btnEditar = new ToolStripButton();
@@ -47,6 +46,7 @@
             toolStripSeparator1 = new ToolStripSeparator();
             labelTipoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
+            labelRodape = new ToolStripStatusLabel();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -110,18 +110,12 @@
             // 
             // statusStrip1
             // 
-            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
+            statusStrip1.Items.AddRange(new ToolStripItem[] { labelRodape });
             statusStrip1.Location = new Point(0, 433);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(808, 22);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new Size(118, 17);
-            toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // toolStrip1
             // 
@@ -207,6 +201,12 @@
             panelRegistros.Size = new Size(808, 372);
             panelRegistros.TabIndex = 3;
             // 
+            // labelRodape
+            // 
+            labelRodape.Name = "labelRodape";
+            labelRodape.Size = new Size(52, 17);
+            labelRodape.Text = "[rodape]";
+            // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -242,7 +242,6 @@
         private ToolStripMenuItem despesasMenuItem1;
         private ToolStripMenuItem categoriasMenuItem;
         private StatusStrip statusStrip1;
-        private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStrip toolStrip1;
         private ToolStripButton btnInserir;
         private ToolStripButton btnEditar;
@@ -252,5 +251,6 @@
         private ToolStripLabel labelTipoCadastro;
         private ToolStripButton btnFiltrar;
         private ToolStripButton btnItens;
+        private ToolStripStatusLabel labelRodape;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace E_Agenda_winApp.ModuloTarefa
 {
-    public class Tarefa : EntidadeBase
+    public class Tarefa : EntidadeBase<Tarefa>
     {      
         public string nome;
         public string prioridade;
@@ -19,12 +19,20 @@ namespace E_Agenda_winApp.ModuloTarefa
             listaItens = new List<Itens>();
         }
 
+        public override void AtualizarInformacoes(Tarefa registroAtualizado)
+        {
+            throw new NotImplementedException();
+        }
+
         public override string ToString()
         {
             return "id: " + id + "," + "nome:" + nome + "," + "Prioridade: " + prioridade;
         }
 
-        
+        public override string[] Validar()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

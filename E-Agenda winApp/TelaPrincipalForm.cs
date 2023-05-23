@@ -11,10 +11,31 @@ namespace E_Agenda_winApp
         private RepositorioTarefas repositorioTarefas = new RepositorioTarefas();
         private RepositorioContato repositorioContato = new RepositorioContato();
         private RepositorioCompromisso repositorioCompromisso = new RepositorioCompromisso();
+        private static TelaPrincipalForm telaPrincipal;
+
 
         public TelaPrincipalForm()
         {
+            PopularListas(repositorioCompromisso, repositorioContato);
             InitializeComponent();
+
+        }
+
+
+        public void AtualizarRodape(string mensagem)
+        {
+            labelRodape.Text = mensagem;
+        }
+
+        public static TelaPrincipalForm Instancia
+        {
+            get
+            {
+                if (telaPrincipal == null)
+                    telaPrincipal = new TelaPrincipalForm();
+
+                return telaPrincipal;
+            }
         }
 
         private void contatosMenuItem_Click(object sender, EventArgs e)
@@ -67,16 +88,41 @@ namespace E_Agenda_winApp
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
+            if (controlador == null)
+            {
+                MessageBox.Show("Selecione um tipo De Cadastro Primeiro!", "E-agenda",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
             controlador.Inserir();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if (controlador == null)
+            {
+                MessageBox.Show("Selecione um tipo De Cadastro Primeiro!", "E-agenda",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
             controlador.Editar();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (controlador == null)
+            {
+                MessageBox.Show("Selecione um tipo De Cadastro Primeiro!", "E-agenda",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+
             controlador.Excluir();
         }
 
@@ -91,7 +137,42 @@ namespace E_Agenda_winApp
 
         private void btnItens_Click(object sender, EventArgs e)
         {
+            if (controlador == null)
+            {
+                MessageBox.Show("Selecione um tipo De Cadastro Primeiro!", "E-agenda",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+
             controlador.AdicionarItens();
         }
+
+
+        public void PopularListas(RepositorioCompromisso repositorio, RepositorioContato repositorioContato)
+        {
+            Contato contato01 = new Contato("4998234402", "aaa@hotmail.com", "Estagiário", "Alisson Scopel", "Klabin");
+            Contato contato02 = new Contato("4932893292", "bbb@gmail.com", "Estagiário", "Felipe Maines", "NDD");
+            Contato contato03 = new Contato("4982913821", "cccc@gmail.com", "Estagiário", "Gustavo Ramos", "RR");
+            Contato contato04 = new Contato("4283198321", "dddd@gmail.com", "Estagiário", "Leonardo Medeiros", "Poker");
+            Contato contato05 = new Contato("4983829289", "dudu@gmail.com", "Dev Junior", "Eduardo Maines", "NDD");
+
+            repositorioContato.Inserir(contato01);
+            repositorioContato.Inserir(contato02);
+            repositorioContato.Inserir(contato03);
+            repositorioContato.Inserir(contato04);
+            repositorioContato.Inserir(contato05);
+
+            Compromisso compromisso01 = new Compromisso("Reunião", "Klabin", DateTime.Now.Date, DateTime.Now, DateTime.Today, contato01);
+            Compromisso compromisso02 = new Compromisso("Reunião", "NDD", DateTime.Now.Date, DateTime.Now, DateTime.Today, contato02);
+            Compromisso compromisso03 = new Compromisso("Reunião", "Casa", DateTime.Now.Date, DateTime.Now, DateTime.Today, contato03);
+
+            repositorioCompromisso.Inserir(compromisso01);
+            repositorioCompromisso.Inserir(compromisso02);
+            repositorioCompromisso.Inserir(compromisso03);
+        }
+
+
     }
 }

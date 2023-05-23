@@ -106,10 +106,12 @@
             checkBox1.TabIndex = 6;
             checkBox1.Text = "Deseja marcar um contato neste compromisso?";
             checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // CbContatos
             // 
             CbContatos.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            CbContatos.Enabled = false;
             CbContatos.FormattingEnabled = true;
             CbContatos.Location = new Point(90, 213);
             CbContatos.Name = "CbContatos";

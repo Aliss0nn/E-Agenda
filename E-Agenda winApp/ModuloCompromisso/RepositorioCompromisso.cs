@@ -1,11 +1,4 @@
-﻿using E_Agenda_winApp.ModuloContato;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace E_Agenda_winApp.ModuloCompromisso
+﻿namespace E_Agenda_winApp.ModuloCompromisso
 {
     public class RepositorioCompromisso
     {

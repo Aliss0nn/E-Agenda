@@ -39,6 +39,16 @@ namespace E_Agenda_winApp.ModuloContato
         }
         public override void Editar()
         {
+            Contato contato = listagemDeContato.ObterContatoSelecionado();
+
+            if (contato == null)
+            {
+                MessageBox.Show("Selecione um Contato Primeiro!", "Edição De Contatos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                return;
+            }
+
             TelaContatoForm telaContatoForm = new TelaContatoForm();
            
             telaContatoForm.Contato = listagemDeContato.ObterContatoSelecionado();
@@ -47,7 +57,7 @@ namespace E_Agenda_winApp.ModuloContato
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                Contato contato = telaContatoForm.Contato;
+                contato = telaContatoForm.Contato;
 
                 repositorioContato.Editar(contato);
 
@@ -58,6 +68,14 @@ namespace E_Agenda_winApp.ModuloContato
         public override void Excluir()
         {
             Contato contato = listagemDeContato.ObterContatoSelecionado();
+
+            if(contato == null )
+            {
+                MessageBox.Show("Selecione um Contato Primeiro!", "Exclusão De Contatos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
 
             DialogResult opcaoEscolhida = MessageBox.Show("Deseja Excluir o contato" + contato.nome, "Excluir Contatos",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);

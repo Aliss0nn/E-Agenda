@@ -1,10 +1,5 @@
 ﻿using E_Agenda_winApp.Compartilhado;
 using E_Agenda_winApp.ModuloContato;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace E_Agenda_winApp.ModuloCompromisso
 {
@@ -56,6 +51,16 @@ namespace E_Agenda_winApp.ModuloCompromisso
 
         public override void Editar()
         {           
+            Compromisso compromisso = listaCompromisso.ObterCompromissoSelecionado();
+
+            if (compromisso == null)
+            {
+                MessageBox.Show("Selecione um Compromisso Primeiro!", "Edição De Compromissos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
             TelaCompromisso telaCompromisso = new TelaCompromisso();
             telaCompromisso.ObterContatos(this.repositorioContato.SelecionarTodos());
 
@@ -65,7 +70,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                Compromisso compromisso = telaCompromisso.Compromisso;
+                compromisso = telaCompromisso.Compromisso;
 
                 repositorioCompromisso.Editar(compromisso);
 
@@ -76,6 +81,14 @@ namespace E_Agenda_winApp.ModuloCompromisso
         public override void Excluir()
         {
             Compromisso compromisso = listaCompromisso.ObterCompromissoSelecionado();
+
+            if(compromisso == null)
+            {
+                MessageBox.Show("Selecione um Compromisso Primeiro!", "Exclusão De Compromissos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
 
             DialogResult opcaoEscolhida = MessageBox.Show("Deseja Excluir o Compromisso" + compromisso.assunto, "Excluir Compromisso",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -112,7 +125,17 @@ namespace E_Agenda_winApp.ModuloCompromisso
             if (listaCompromisso == null)
                 listaCompromisso = new ListaCompromissoControl();
 
-           TelaFiltradorForm telaFiltrador = new TelaFiltradorForm();
+            Compromisso compromisso = listaCompromisso.ObterCompromissoSelecionado();
+
+            if (compromisso == null)
+            {
+                MessageBox.Show("Selecione um Compromisso Primeiro!", "Filtro De Compromissos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            TelaFiltradorForm telaFiltrador = new TelaFiltradorForm();
 
             DialogResult opcaoEscolhida = telaFiltrador.ShowDialog();
 

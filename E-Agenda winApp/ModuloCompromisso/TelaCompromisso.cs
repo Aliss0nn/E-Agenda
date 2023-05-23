@@ -1,15 +1,4 @@
 ﻿using E_Agenda_winApp.ModuloContato;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace E_Agenda_winApp.ModuloCompromisso
 {
@@ -63,6 +52,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
 
         public void btnSalvarCompromisso_Click(object sender, EventArgs e)
         {
+                
             string assunto = txtAssunto.Text;
             string local = txtLocal.Text;
             DateTime data = dateTimeData.Value;
@@ -72,6 +62,14 @@ namespace E_Agenda_winApp.ModuloCompromisso
             Contato contato = contatos.Find(x => x.nome == CbContatos.SelectedItem);
 
             compromisso = new Compromisso(assunto, local, data, horaInicial, horaFinal, contato);
+
+           
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            CbContatos.Enabled = checkBox1.Checked;
         }
     }
 }

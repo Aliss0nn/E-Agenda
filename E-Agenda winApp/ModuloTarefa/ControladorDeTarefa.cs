@@ -40,6 +40,16 @@ namespace E_Agenda_winApp.ModuloTarefa
 
         public override void Editar()
         {
+            Tarefa tarefa = listagemDeTarefa.ObterTarefaSelecionada();
+
+            if (tarefa == null)
+            {
+                MessageBox.Show("Selecione uma Tarefa Primeiro!", "Edição de Tarefas",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
             TelaTarefa telaTarefa = new TelaTarefa();
 
             telaTarefa.Tarefa = listagemDeTarefa.ObterTarefaSelecionada();
@@ -48,7 +58,7 @@ namespace E_Agenda_winApp.ModuloTarefa
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                Tarefa tarefa = telaTarefa.Tarefa;
+                tarefa = telaTarefa.Tarefa;
 
                 repositorioTarefas.Editar(tarefa);
 
@@ -57,8 +67,16 @@ namespace E_Agenda_winApp.ModuloTarefa
         }
 
         public override void Excluir()
-        {
+        {       
             Tarefa tarefa = listagemDeTarefa.ObterTarefaSelecionada();
+
+            if (tarefa == null)
+            {
+                MessageBox.Show("Selecione uma Tarefa Primeiro!", "Edição de Tarefas",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
 
             DialogResult opcaoEscolhida = MessageBox.Show("Deseja excluir a Tarefa" + tarefa.nome, "Excluir Tarefas",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -102,7 +120,7 @@ namespace E_Agenda_winApp.ModuloTarefa
 
             if (tarefaSelecionada == null)
             {
-                MessageBox.Show("Uma tarefa deve estar selecionada!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Um Item deve estar selecionado!", "Seleção de Itens", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
