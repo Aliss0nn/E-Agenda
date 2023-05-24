@@ -41,6 +41,7 @@ namespace E_Agenda_winApp.ModuloTarefa
         public override void Editar()
         {
             Tarefa tarefa = listagemDeTarefa.ObterTarefaSelecionada();
+            
 
             if (tarefa == null)
             {
@@ -52,6 +53,8 @@ namespace E_Agenda_winApp.ModuloTarefa
 
             TelaTarefa telaTarefa = new TelaTarefa();
 
+            telaTarefa.TirarDatas();
+          
             telaTarefa.Tarefa = listagemDeTarefa.ObterTarefaSelecionada();
 
             DialogResult opcaoEscolhida = telaTarefa.ShowDialog();

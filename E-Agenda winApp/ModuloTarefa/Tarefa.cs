@@ -5,12 +5,12 @@ namespace E_Agenda_winApp.ModuloTarefa
     public class Tarefa : EntidadeBase<Tarefa>
     {      
         public string nome;
-        public string prioridade;
+        public PrioridadeTarefaEnum prioridade;
         public DateTime dataInicial;
         public DateTime dataFinal;
         public List<Itens> listaItens;
  
-        public Tarefa(string nome, string prioridade, DateTime dataInicial, DateTime dataFinal)
+        public Tarefa(string nome, PrioridadeTarefaEnum prioridade, DateTime dataInicial, DateTime dataFinal)
         {
             this.nome = nome;
             this.dataInicial = dataInicial;

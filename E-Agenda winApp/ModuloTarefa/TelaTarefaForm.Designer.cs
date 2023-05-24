@@ -35,11 +35,11 @@
             txtNomeDaTarefa = new TextBox();
             label2 = new Label();
             label1 = new Label();
-            txtPrioridade = new TextBox();
             dtInicio = new DateTimePicker();
             dtFinal = new DateTimePicker();
-            label3 = new Label();
-            label4 = new Label();
+            lbInicio = new Label();
+            lbFinal = new Label();
+            cmbPrioridade = new ComboBox();
             SuspendLayout();
             // 
             // btnCancelar
@@ -106,13 +106,6 @@
             label1.TabIndex = 8;
             label1.Text = "Prioridade";
             // 
-            // txtPrioridade
-            // 
-            txtPrioridade.Location = new Point(108, 75);
-            txtPrioridade.Name = "txtPrioridade";
-            txtPrioridade.Size = new Size(369, 23);
-            txtPrioridade.TabIndex = 9;
-            // 
             // dtInicio
             // 
             dtInicio.Location = new Point(56, 170);
@@ -127,34 +120,42 @@
             dtFinal.Size = new Size(261, 23);
             dtFinal.TabIndex = 11;
             // 
-            // label3
+            // lbInicio
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(108, 131);
-            label3.Name = "label3";
-            label3.Size = new Size(86, 15);
-            label3.TabIndex = 12;
-            label3.Text = "Inicio da Tarefa";
+            lbInicio.AutoSize = true;
+            lbInicio.Location = new Point(108, 131);
+            lbInicio.Name = "lbInicio";
+            lbInicio.Size = new Size(86, 15);
+            lbInicio.TabIndex = 12;
+            lbInicio.Text = "Inicio da Tarefa";
             // 
-            // label4
+            // lbFinal
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(395, 131);
-            label4.Name = "label4";
-            label4.Size = new Size(82, 15);
-            label4.TabIndex = 13;
-            label4.Text = "Final da Tarefa";
+            lbFinal.AutoSize = true;
+            lbFinal.Location = new Point(395, 131);
+            lbFinal.Name = "lbFinal";
+            lbFinal.Size = new Size(82, 15);
+            lbFinal.TabIndex = 13;
+            lbFinal.Text = "Final da Tarefa";
+            // 
+            // cmbPrioridade
+            // 
+            cmbPrioridade.FormattingEnabled = true;
+            cmbPrioridade.Location = new Point(108, 75);
+            cmbPrioridade.Name = "cmbPrioridade";
+            cmbPrioridade.Size = new Size(121, 23);
+            cmbPrioridade.TabIndex = 14;
             // 
             // TelaTarefa
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(626, 387);
-            Controls.Add(label4);
-            Controls.Add(label3);
+            Controls.Add(cmbPrioridade);
+            Controls.Add(lbFinal);
+            Controls.Add(lbInicio);
             Controls.Add(dtFinal);
             Controls.Add(dtInicio);
-            Controls.Add(txtPrioridade);
             Controls.Add(label1);
             Controls.Add(label2);
             Controls.Add(txtNomeDaTarefa);
@@ -181,10 +182,10 @@
         private TextBox txtNomeDaTarefa;
         private Label label2;
         private Label label1;
-        private TextBox txtPrioridade;
         private DateTimePicker dtInicio;
         private DateTimePicker dtFinal;
-        private Label label3;
-        private Label label4;
+        private Label lbInicio;
+        private Label lbFinal;
+        private ComboBox cmbPrioridade;
     }
 }
