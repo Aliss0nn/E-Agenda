@@ -1,9 +1,16 @@
-﻿namespace E_Agenda_winApp.ModuloCompromisso
+﻿using E_Agenda_winApp.Compartilhado;
+
+namespace E_Agenda_winApp.ModuloCompromisso
 {
-    public class RepositorioCompromisso
+    public class RepositorioCompromisso : RepositorioBase<Compromisso>
     {
         List<Compromisso> compromissos = new List<Compromisso>();
         private int contador;
+
+        public RepositorioCompromisso(List<Compromisso> compromissos)
+        {
+            this.listaRegistros = compromissos;
+        }
 
         public void Inserir(Compromisso compromisso)
         {
@@ -43,5 +50,20 @@
         {
             return compromissos.FindAll(periodo);
         }
+
+        public List<Compromisso> SelecionarCompromissosPassados(DateTime hoje)
+        {
+            return listaRegistros.Where(x => x.data.Date < hoje.Date).ToList();
+        }
+
+        public List<Compromisso> SelecionarCompromissosFuturos(DateTime dataInicio, DateTime dataFinal)
+        {
+            return listaRegistros
+                .Where(x => x.data > dataInicio)
+                .Where(x => x.data < dataFinal)
+                .ToList();
+        }
+
+
     }
 }

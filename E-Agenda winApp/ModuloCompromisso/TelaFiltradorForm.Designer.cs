@@ -35,7 +35,7 @@
             btnFiltrar = new Button();
             btnCancelar = new Button();
             rdbTodos = new RadioButton();
-            rdbPassados = new RadioButton();
+            rdbPassado = new RadioButton();
             rdbFuturos = new RadioButton();
             SuspendLayout();
             // 
@@ -106,16 +106,16 @@
             rdbTodos.Text = "Visualizar Todos os Compromissos";
             rdbTodos.UseVisualStyleBackColor = true;
             // 
-            // rdbPassados
+            // rdbPassado
             // 
-            rdbPassados.AutoSize = true;
-            rdbPassados.Location = new Point(56, 76);
-            rdbPassados.Name = "rdbPassados";
-            rdbPassados.Size = new Size(273, 19);
-            rdbPassados.TabIndex = 7;
-            rdbPassados.TabStop = true;
-            rdbPassados.Text = "Visualizar Somente os Compromissos Passados";
-            rdbPassados.UseVisualStyleBackColor = true;
+            rdbPassado.AutoSize = true;
+            rdbPassado.Location = new Point(56, 76);
+            rdbPassado.Name = "rdbPassado";
+            rdbPassado.Size = new Size(273, 19);
+            rdbPassado.TabIndex = 7;
+            rdbPassado.TabStop = true;
+            rdbPassado.Text = "Visualizar Somente os Compromissos Passados";
+            rdbPassado.UseVisualStyleBackColor = true;
             // 
             // rdbFuturos
             // 
@@ -134,7 +134,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(614, 352);
             Controls.Add(rdbFuturos);
-            Controls.Add(rdbPassados);
+            Controls.Add(rdbPassado);
             Controls.Add(rdbTodos);
             Controls.Add(btnCancelar);
             Controls.Add(btnFiltrar);
@@ -161,7 +161,7 @@
         private Button btnFiltrar;
         private Button btnCancelar;
         private RadioButton rdbTodos;
-        private RadioButton rdbPassados;
+        private RadioButton rdbPassado;
         private RadioButton rdbFuturos;
     }
 }

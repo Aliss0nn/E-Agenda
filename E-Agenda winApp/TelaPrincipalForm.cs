@@ -9,18 +9,17 @@ namespace E_Agenda_winApp
     {
         private ControladorBase controlador;
         private RepositorioTarefas repositorioTarefas = new RepositorioTarefas();
-        private RepositorioContato repositorioContato = new RepositorioContato();
-        private RepositorioCompromisso repositorioCompromisso = new RepositorioCompromisso();
+        private RepositorioContato repositorioContato = new RepositorioContato();     
+        private RepositorioCompromisso repositorioCompromisso = new RepositorioCompromisso(new List<Compromisso>());
         private static TelaPrincipalForm telaPrincipal;
 
 
         public TelaPrincipalForm()
         {
-            PopularListas(repositorioCompromisso, repositorioContato);
+            PopularListas(repositorioCompromisso, repositorioContato,repositorioTarefas);
             InitializeComponent();
 
         }
-
 
         public void AtualizarRodape(string mensagem)
         {
@@ -40,6 +39,9 @@ namespace E_Agenda_winApp
 
         private void contatosMenuItem_Click(object sender, EventArgs e)
         {
+            btnFiltrar.Visible = false;
+            btnItens.Visible = false;
+
             controlador = new ControladorDeContato(repositorioContato);
 
             ConfigurarTelaPrincipal(controlador);
@@ -64,6 +66,9 @@ namespace E_Agenda_winApp
 
         private void tarefasMenuItem_Click(object sender, EventArgs e)
         {
+            btnFiltrar.Visible = true;
+            btnItens.Visible = true;
+            
             controlador = new ControladorDeTarefa(repositorioTarefas);
 
             ConfigurarTelaPrincipal(controlador);
@@ -71,6 +76,9 @@ namespace E_Agenda_winApp
 
         private void compromissosMenuItem_Click(object sender, EventArgs e)
         {
+            btnFiltrar.Visible = true;
+            btnItens.Visible = true;
+
             controlador = new ControladorDeCompromisso(repositorioCompromisso, repositorioContato);
 
             ConfigurarTelaPrincipal(controlador);
@@ -146,11 +154,11 @@ namespace E_Agenda_winApp
             }
 
 
-            controlador.AdicionarItens();
+            controlador.Adicionar();
         }
 
 
-        public void PopularListas(RepositorioCompromisso repositorio, RepositorioContato repositorioContato)
+        public void PopularListas(RepositorioCompromisso repositorio, RepositorioContato repositorioContato,RepositorioTarefas repositorioTarefa)
         {
             Contato contato01 = new Contato("4998234402", "aaa@hotmail.com", "Estagiário", "Alisson Scopel", "Klabin");
             Contato contato02 = new Contato("4932893292", "bbb@gmail.com", "Estagiário", "Felipe Maines", "NDD");
@@ -171,6 +179,30 @@ namespace E_Agenda_winApp
             repositorioCompromisso.Inserir(compromisso01);
             repositorioCompromisso.Inserir(compromisso02);
             repositorioCompromisso.Inserir(compromisso03);
+
+            Tarefa t1 = new Tarefa(1,"Preparar Apresentação 1", PrioridadeTarefaEnum.Alta, DateTime.Now,DateTime.Now);
+
+            t1.AdicionarItem(new ItemTarefa("a"));
+            t1.AdicionarItem(new ItemTarefa("b"));
+            t1.AdicionarItem(new ItemTarefa("c"));
+
+            Tarefa t2 = new Tarefa(2,"Preparar Apresentação 2 ", PrioridadeTarefaEnum.Alta, DateTime.Now, DateTime.Now);
+
+            t2.AdicionarItem(new ItemTarefa("a"));
+            t2.AdicionarItem(new ItemTarefa("b"));
+            t2.AdicionarItem(new ItemTarefa("c"));
+
+
+            Tarefa t3 = new Tarefa(3,"Preparar Apresentação 3 ", PrioridadeTarefaEnum.Baixa, DateTime.Now, DateTime.Now);
+
+            t3.AdicionarItem(new ItemTarefa("a"));
+            t3.AdicionarItem(new ItemTarefa("b"));
+            t3.AdicionarItem(new ItemTarefa("c"));
+
+            repositorioTarefa.Inserir(t1);
+            repositorioTarefa.Inserir(t2);
+            repositorioTarefa.Inserir(t3);
+
         }
 
 

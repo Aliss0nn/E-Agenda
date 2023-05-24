@@ -110,11 +110,6 @@ namespace E_Agenda_winApp.ModuloContato
         public override string ObterTipoCadastro()
         {
             return "Cadastro de Contatos";
-        }
-
-        public override void AdicionarItens()
-        {
-            throw new NotImplementedException();
-        }
+        }     
     }
 }

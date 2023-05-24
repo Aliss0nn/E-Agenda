@@ -18,6 +18,19 @@
        
         public abstract void Excluir();
 
-        public abstract void AdicionarItens();
+        public virtual void Adicionar()
+        {
+
+        }
+
+        public virtual void Filtrar()
+        {
+
+        }
+
+        public virtual void ConcluirItens()
+        {
+        }
+
     }
 }

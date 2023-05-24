@@ -1,6 +1,9 @@
-﻿namespace E_Agenda_winApp.ModuloTarefa
+﻿using E_Agenda_winApp.Compartilhado;
+using E_Agenda_winApp.ModuloContato;
+
+namespace E_Agenda_winApp.ModuloTarefa
 {
-    public class RepositorioTarefas
+    public class RepositorioTarefas : RepositorioBase<Tarefa>
     {
         List<Tarefa> tarefas = new List<Tarefa>();       
         public int contador;
@@ -19,12 +22,15 @@
            return tarefas;
         }
 
-        public void Editar(Tarefa tarefa)
-        {          
+        public void Editar(int id, Tarefa tarefa)
+        {
             Tarefa tarefaSelecionada = SelecionarPorId(tarefa.id);
-                   
-            tarefaSelecionada.nome = tarefa.nome;  
+
+            tarefaSelecionada.id = tarefa.id;
             tarefaSelecionada.prioridade = tarefa.prioridade;
+            tarefaSelecionada.dataFinal = tarefa.dataFinal;
+            tarefaSelecionada.dataInicial = tarefa.dataInicial;
+            tarefaSelecionada.nome = tarefa.nome;
         }
 
         public Tarefa SelecionarPorId(int id)
@@ -35,6 +41,29 @@
         public void Excluir(Tarefa tarefa)
         {
             tarefas.Remove(tarefa);
+        }
+
+        public List<Tarefa> SelecionarPendentes()
+        {
+            return listaRegistros
+               .Where(x => x.percentualConcluido == 100)
+               .OrderByDescending(x => x.prioridade)
+               .ToList();
+        }
+
+        public List<Tarefa> SelecionarConcluidas()
+        {
+            return listaRegistros
+               .Where(x => x.percentualConcluido < 100)
+               .OrderByDescending(x => x.prioridade)
+               .ToList();
+        }
+
+        public List<Tarefa> SelecionarTodosOrdenadosPorPrioridade()
+        {
+            return listaRegistros
+                .OrderByDescending(x => x.prioridade)
+                .ToList();
         }
     }
 }

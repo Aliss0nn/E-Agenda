@@ -41,6 +41,11 @@ namespace E_Agenda_winApp.ModuloCompromisso
                 CarregarCompromissos();
             }
         }
+        private void CarregarCompromissos(List<Compromisso> compromissos)
+        {
+            listaCompromisso.AtualizarRegistros(compromissos);
+        }
+
 
         private void CarregarCompromissos()
         {
@@ -125,34 +130,35 @@ namespace E_Agenda_winApp.ModuloCompromisso
             if (listaCompromisso == null)
                 listaCompromisso = new ListaCompromissoControl();
 
-            Compromisso compromisso = listaCompromisso.ObterCompromissoSelecionado();
-
-            if (compromisso == null)
-            {
-                MessageBox.Show("Selecione um Compromisso Primeiro!", "Filtro De Compromissos",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return;
-            }
-
-            TelaFiltradorForm telaFiltrador = new TelaFiltradorForm();
-
-            DialogResult opcaoEscolhida = telaFiltrador.ShowDialog();
+            TelaFiltradorForm telaFiltro = new TelaFiltradorForm();
+            DialogResult opcaoEscolhida = telaFiltro.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                Predicate<Compromisso> periodo = c => c.data > telaFiltrador.DataInicial
-                && c.data <= telaFiltrador.DataFinal;
+                StatusCompromissosEnum status = telaFiltro.ObterStatus();
+                List<Compromisso> compromissos = null;
 
-                List<Compromisso> compromissos = repositorioCompromisso.SelecionarAlternativa(periodo);
+                if (status == StatusCompromissosEnum.Todos)
+                {
+                    compromissos = repositorioCompromisso.SelecionarTodos();
+                }
 
-                listaCompromisso.AtualizarRegistros(compromissos);
+                else if (status == StatusCompromissosEnum.Passados)
+                {
+                    compromissos = repositorioCompromisso.SelecionarCompromissosPassados(DateTime.Now);
+                }
+                else if (status == StatusCompromissosEnum.Futuros)
+                {
+                    DateTime dataInicio = telaFiltro.ObterDataInicio();
+                    DateTime dataFinal = telaFiltro.ObterDataFinal();
+
+                    compromissos = repositorioCompromisso.SelecionarCompromissosFuturos(dataInicio, dataFinal);
+                }
+
+                CarregarCompromissos(compromissos);
+
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {compromissos.Count} compromissos");
             }
-        }
-
-        public override void AdicionarItens()
-        {
-            throw new NotImplementedException();
-        }
+        }       
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace E_Agenda_winApp.ModuloContato
+﻿using E_Agenda_winApp.Compartilhado;
+
+namespace E_Agenda_winApp.ModuloContato
 {
-    public class RepositorioContato
+    public class RepositorioContato : RepositorioBase<Contato>
     {
         List<Contato> contatos = new List<Contato>();
 

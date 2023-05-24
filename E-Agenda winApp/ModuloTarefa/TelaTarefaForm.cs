@@ -9,7 +9,7 @@
             InitializeComponent();
             ConfigurarData(dtInicio);
             ConfigurarData(dtFinal);
-            CarregarTarefas();
+            CarregarPrioridades();
         }
 
         public void TirarDatas()
@@ -21,7 +21,7 @@
         }
 
 
-        private void CarregarTarefas()
+        private void CarregarPrioridades()
         {
             PrioridadeTarefaEnum[] prioridades = Enum.GetValues<PrioridadeTarefaEnum>();
 
@@ -49,13 +49,14 @@
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            int id = Convert.ToInt32(txtId.Text);
             string nome = txtNomeDaTarefa.Text;
             PrioridadeTarefaEnum prioridade = (PrioridadeTarefaEnum)cmbPrioridade.SelectedItem;
             DateTime dataInicial = dtInicio.Value;
             DateTime dataFinal = dtFinal.Value;
 
 
-            tarefa = new Tarefa(nome, prioridade, dataFinal, dataInicial);
+            tarefa = new Tarefa(id,nome, prioridade, dataFinal, dataInicial);
         }
 
         private void ConfigurarData(DateTimePicker data)
@@ -63,6 +64,33 @@
             data.Format = DateTimePickerFormat.Custom;
             data.CustomFormat = "HH:mm";
             data.ShowUpDown = true;
+        }
+
+        public void ConfigurarTela(Tarefa tarefaSelecionada)
+        {
+            txtId.Text = tarefaSelecionada.id.ToString();
+
+            txtNomeDaTarefa.Text = tarefaSelecionada.nome;
+
+            cmbPrioridade.SelectedItem = tarefaSelecionada.prioridade;
+
+            dtInicio.Value = tarefaSelecionada.dataInicial;
+
+            dtFinal.Value = tarefaSelecionada.dataFinal;
+        }
+
+        public Tarefa ObterTarefa()
+        {
+            int id = Convert.ToInt32(txtId.Text);
+
+            string titulo = txtNomeDaTarefa.Text;
+
+            PrioridadeTarefaEnum prioridade = (PrioridadeTarefaEnum)cmbPrioridade.SelectedItem;
+
+            DateTime dataCriacao = dtInicio.Value;
+            DateTime dataFinal = dtFinal.Value;
+
+            return new Tarefa(id,titulo, prioridade, dataCriacao, dataFinal);
         }
     }
 }

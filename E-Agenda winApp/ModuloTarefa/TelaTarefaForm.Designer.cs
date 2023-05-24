@@ -46,7 +46,7 @@
             // 
             btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(509, 329);
+            btnCancelar.Location = new Point(509, 271);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(82, 35);
             btnCancelar.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             btnSalvar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalvar.DialogResult = DialogResult.OK;
-            btnSalvar.Location = new Point(404, 329);
+            btnSalvar.Location = new Point(404, 271);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(86, 35);
             btnSalvar.TabIndex = 2;
@@ -150,7 +150,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(626, 387);
+            ClientSize = new Size(626, 329);
             Controls.Add(cmbPrioridade);
             Controls.Add(lbFinal);
             Controls.Add(lbInicio);
