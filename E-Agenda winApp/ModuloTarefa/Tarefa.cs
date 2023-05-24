@@ -21,7 +21,10 @@ namespace E_Agenda_winApp.ModuloTarefa
 
         public override void AtualizarInformacoes(Tarefa registroAtualizado)
         {
-            throw new NotImplementedException();
+            this.nome = registroAtualizado.nome;
+            this.prioridade = registroAtualizado.prioridade;
+            this.dataFinal = registroAtualizado.dataFinal;
+            this.dataInicial = registroAtualizado.dataInicial;
         }
 
         public override string ToString()
@@ -31,7 +34,12 @@ namespace E_Agenda_winApp.ModuloTarefa
 
         public override string[] Validar()
         {
-            throw new NotImplementedException();
+            List<string> erros = new List<string>();
+
+            if (string.IsNullOrEmpty(nome))
+                erros.Add("O campo 'nome' é obrigatório");
+
+            return erros.ToArray();
         }
     }
 
