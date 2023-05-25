@@ -7,7 +7,12 @@ namespace E_Agenda_winApp.ModuloTarefa
     {
         List<Tarefa> tarefas = new List<Tarefa>();       
         public int contador;
-       
+
+        public RepositorioTarefas(List<Tarefa> tarefas)
+        {
+            listaRegistros = tarefas;
+        }
+
         public void Inserir(Tarefa tarefa)
         {
             contador++;

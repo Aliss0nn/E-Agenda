@@ -37,7 +37,8 @@
             despesasMenuItem1 = new ToolStripMenuItem();
             categoriasMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
-            toolStrip1 = new ToolStrip();
+            labelRodape = new ToolStripStatusLabel();
+            barraFerramentas = new ToolStrip();
             btnInserir = new ToolStripButton();
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
@@ -46,10 +47,9 @@
             toolStripSeparator1 = new ToolStripSeparator();
             labelTipoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
-            labelRodape = new ToolStripStatusLabel();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
-            toolStrip1.SuspendLayout();
+            barraFerramentas.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -117,14 +117,20 @@
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
-            // toolStrip1
+            // labelRodape
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, btnFiltrar, btnItens, toolStripSeparator1, labelTipoCadastro });
-            toolStrip1.Location = new Point(0, 24);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(808, 37);
-            toolStrip1.TabIndex = 2;
-            toolStrip1.Text = "toolStrip1";
+            labelRodape.Name = "labelRodape";
+            labelRodape.Size = new Size(52, 17);
+            labelRodape.Text = "[rodape]";
+            // 
+            // barraFerramentas
+            // 
+            barraFerramentas.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, btnFiltrar, btnItens, toolStripSeparator1, labelTipoCadastro });
+            barraFerramentas.Location = new Point(0, 24);
+            barraFerramentas.Name = "barraFerramentas";
+            barraFerramentas.Size = new Size(808, 37);
+            barraFerramentas.TabIndex = 2;
+            barraFerramentas.Text = "toolStrip1";
             // 
             // btnInserir
             // 
@@ -201,19 +207,13 @@
             panelRegistros.Size = new Size(808, 372);
             panelRegistros.TabIndex = 3;
             // 
-            // labelRodape
-            // 
-            labelRodape.Name = "labelRodape";
-            labelRodape.Size = new Size(52, 17);
-            labelRodape.Text = "[rodape]";
-            // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(808, 455);
             Controls.Add(panelRegistros);
-            Controls.Add(toolStrip1);
+            Controls.Add(barraFerramentas);
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -225,8 +225,8 @@
             menuStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
-            toolStrip1.ResumeLayout(false);
-            toolStrip1.PerformLayout();
+            barraFerramentas.ResumeLayout(false);
+            barraFerramentas.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -242,7 +242,7 @@
         private ToolStripMenuItem despesasMenuItem1;
         private ToolStripMenuItem categoriasMenuItem;
         private StatusStrip statusStrip1;
-        private ToolStrip toolStrip1;
+        private ToolStrip barraFerramentas;
         private ToolStripButton btnInserir;
         private ToolStripButton btnEditar;
         private ToolStripButton btnExcluir;

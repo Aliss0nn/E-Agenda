@@ -1,11 +1,12 @@
 ﻿using E_Agenda_winApp.Compartilhado;
+using E_Agenda_winApp.ModuloTarefa;
 
 namespace E_Agenda_winApp.ModuloContato
 {
     public class ControladorDeContato : ControladorBase
     {
         private RepositorioContato repositorioContato;
-        private ListagemDeContatoControl listagemDeContato;
+        private TabelaContatoControl tabelaContato;
 
         public ControladorDeContato(RepositorioContato repositorioContato) 
         {
@@ -39,7 +40,7 @@ namespace E_Agenda_winApp.ModuloContato
         }
         public override void Editar()
         {
-            Contato contato = listagemDeContato.ObterContatoSelecionado();
+            Contato contato = ObterContatoSelecionado();
 
             if (contato == null)
             {
@@ -50,8 +51,8 @@ namespace E_Agenda_winApp.ModuloContato
             }
 
             TelaContatoForm telaContatoForm = new TelaContatoForm();
-           
-            telaContatoForm.Contato = listagemDeContato.ObterContatoSelecionado();
+          
+            telaContatoForm.ConfigurarTela(contato);
 
             DialogResult opcaoEscolhida = telaContatoForm.ShowDialog();
 
@@ -65,9 +66,16 @@ namespace E_Agenda_winApp.ModuloContato
             }
         }
 
+        private Contato ObterContatoSelecionado()
+        {
+            int id = tabelaContato.ObterIdSelecionado();
+
+            return repositorioContato.SelecionarPorId(id);
+        }
+
         public override void Excluir()
         {
-            Contato contato = listagemDeContato.ObterContatoSelecionado();
+            Contato contato = ObterContatoSelecionado();
 
             if(contato == null )
             {
@@ -92,19 +100,19 @@ namespace E_Agenda_winApp.ModuloContato
         {
             List<Contato> contatos = repositorioContato.SelecionarTodos();
 
-            listagemDeContato.AtualizarRegistros(contatos);
+            tabelaContato.AtualizarRegistros(contatos);
         }
 
         public override UserControl ObterListagem()
         {
-           if(listagemDeContato == null)
+           if(tabelaContato == null)
            {
-                listagemDeContato = new ListagemDeContatoControl();
+                tabelaContato = new TabelaContatoControl();
            }
 
             CarregarContatos();
 
-            return listagemDeContato;
+            return tabelaContato;
         }
 
         public override string ObterTipoCadastro()

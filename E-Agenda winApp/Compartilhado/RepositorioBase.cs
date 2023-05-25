@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace E_Agenda_winApp.Compartilhado
+﻿namespace E_Agenda_winApp.Compartilhado
 {
     public abstract class RepositorioBase<TEntidade>
         where TEntidade : EntidadeBase<TEntidade>
@@ -21,12 +15,12 @@ namespace E_Agenda_winApp.Compartilhado
             listaRegistros.Add(registro);
         }
 
-        //public virtual void Editar(int id, TEntidade registroAtualizado)
-        //{
-        //    TEntidade registroSelecionado = SelecionarPorId(id);
+        public virtual void Editar(int id, TEntidade registroAtualizado)
+        {
+            TEntidade registroSelecionado = SelecionarPorId(id);
 
-        //    registroSelecionado.AtualizarInformacoes(registroAtualizado);
-        //}
+            registroSelecionado.AtualizarInformacoes(registroAtualizado);
+        }
 
         public virtual void Editar(TEntidade registroSelecionado, TEntidade registroAtualizado)
         {

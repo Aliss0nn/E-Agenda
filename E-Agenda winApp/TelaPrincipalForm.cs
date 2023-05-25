@@ -8,15 +8,15 @@ namespace E_Agenda_winApp
     public partial class TelaPrincipalForm : Form
     {
         private ControladorBase controlador;
-        private RepositorioTarefas repositorioTarefas = new RepositorioTarefas();
-        private RepositorioContato repositorioContato = new RepositorioContato();     
+        private RepositorioTarefas repositorioTarefas = new RepositorioTarefas(new List<Tarefa>());
+        private RepositorioContato repositorioContato = new RepositorioContato();
         private RepositorioCompromisso repositorioCompromisso = new RepositorioCompromisso(new List<Compromisso>());
         private static TelaPrincipalForm telaPrincipal;
 
 
         public TelaPrincipalForm()
         {
-            PopularListas(repositorioCompromisso, repositorioContato,repositorioTarefas);
+            PopularListas(repositorioCompromisso, repositorioContato, repositorioTarefas);
             InitializeComponent();
 
         }
@@ -38,10 +38,7 @@ namespace E_Agenda_winApp
         }
 
         private void contatosMenuItem_Click(object sender, EventArgs e)
-        {
-            btnFiltrar.Visible = false;
-            btnItens.Visible = false;
-
+        {         
             controlador = new ControladorDeContato(repositorioContato);
 
             ConfigurarTelaPrincipal(controlador);
@@ -55,34 +52,14 @@ namespace E_Agenda_winApp
             panelRegistros.Controls.Add(listagem);
         }
 
-        private void ConfigurarTelaPrincipal(ControladorBase controladorBase)
-        {
-            labelTipoCadastro.Text = controladorBase.ObterTipoCadastro();
+        //private void ConfigurarBarraFerramentas(ControladorBase controlador)
+        //{
+        //    barraFerramentas.Enabled = true;
 
-            ConfigurarToolTips(controlador);
+        //    ConfigurarToolTips(controlador);
 
-            ConfigurarListagem(controlador);
-        }
-
-        private void tarefasMenuItem_Click(object sender, EventArgs e)
-        {
-            btnFiltrar.Visible = true;
-            btnItens.Visible = true;
-            
-            controlador = new ControladorDeTarefa(repositorioTarefas);
-
-            ConfigurarTelaPrincipal(controlador);
-        }
-
-        private void compromissosMenuItem_Click(object sender, EventArgs e)
-        {
-            btnFiltrar.Visible = true;
-            btnItens.Visible = true;
-
-            controlador = new ControladorDeCompromisso(repositorioCompromisso, repositorioContato);
-
-            ConfigurarTelaPrincipal(controlador);
-        }
+        //    ConfigurarEstados(controlador);
+        //}
 
         private void ConfigurarToolTips(ControladorBase controlador)
         {
@@ -92,6 +69,41 @@ namespace E_Agenda_winApp
             btnFiltrar.ToolTipText = controlador.ToolTipFiltrar;
             btnItens.ToolTipText = controlador.ToolTipAdicionaritens;
         }
+
+        private void ConfigurarTelaPrincipal(ControladorBase controladorBase)
+        {
+            labelTipoCadastro.Text = controladorBase.ObterTipoCadastro();
+
+            ConfigurarEstados(controlador);
+
+            ConfigurarToolTips(controlador);
+
+            ConfigurarListagem(controlador);
+        }
+
+        private void ConfigurarEstados(ControladorBase controlador)
+        {
+            btnInserir.Enabled = controlador.InserirHabilitado;
+            btnEditar.Enabled = controlador.EditarHabilitado;
+            btnExcluir.Enabled = controlador.ExcluirHabilitado;
+            btnFiltrar.Enabled = controlador.FiltrarHabilitado;
+            btnItens.Enabled = controlador.AdicionarItensHabilitado;          
+        }
+
+        private void tarefasMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorDeTarefa(repositorioTarefas);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void compromissosMenuItem_Click(object sender, EventArgs e)
+        {        
+            controlador = new ControladorDeCompromisso(repositorioCompromisso, repositorioContato);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
 
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -130,7 +142,6 @@ namespace E_Agenda_winApp
                 return;
             }
 
-
             controlador.Excluir();
         }
 
@@ -153,12 +164,11 @@ namespace E_Agenda_winApp
                 return;
             }
 
-
             controlador.Adicionar();
         }
 
 
-        public void PopularListas(RepositorioCompromisso repositorio, RepositorioContato repositorioContato,RepositorioTarefas repositorioTarefa)
+        public void PopularListas(RepositorioCompromisso repositorio, RepositorioContato repositorioContato, RepositorioTarefas repositorioTarefa)
         {
             Contato contato01 = new Contato("4998234402", "aaa@hotmail.com", "Estagiário", "Alisson Scopel", "Klabin");
             Contato contato02 = new Contato("4932893292", "bbb@gmail.com", "Estagiário", "Felipe Maines", "NDD");
@@ -180,20 +190,20 @@ namespace E_Agenda_winApp
             repositorioCompromisso.Inserir(compromisso02);
             repositorioCompromisso.Inserir(compromisso03);
 
-            Tarefa t1 = new Tarefa(1,"Preparar Apresentação 1", PrioridadeTarefaEnum.Alta, DateTime.Now,DateTime.Now);
+            Tarefa t1 = new Tarefa(1, "Preparar Apresentação 1", PrioridadeTarefaEnum.Alta, DateTime.Now, DateTime.Now);
 
             t1.AdicionarItem(new ItemTarefa("a"));
             t1.AdicionarItem(new ItemTarefa("b"));
             t1.AdicionarItem(new ItemTarefa("c"));
 
-            Tarefa t2 = new Tarefa(2,"Preparar Apresentação 2 ", PrioridadeTarefaEnum.Alta, DateTime.Now, DateTime.Now);
+            Tarefa t2 = new Tarefa(2, "Preparar Apresentação 2 ", PrioridadeTarefaEnum.Alta, DateTime.Now, DateTime.Now);
 
             t2.AdicionarItem(new ItemTarefa("a"));
             t2.AdicionarItem(new ItemTarefa("b"));
             t2.AdicionarItem(new ItemTarefa("c"));
 
 
-            Tarefa t3 = new Tarefa(3,"Preparar Apresentação 3 ", PrioridadeTarefaEnum.Baixa, DateTime.Now, DateTime.Now);
+            Tarefa t3 = new Tarefa(3, "Preparar Apresentação 3 ", PrioridadeTarefaEnum.Baixa, DateTime.Now, DateTime.Now);
 
             t3.AdicionarItem(new ItemTarefa("a"));
             t3.AdicionarItem(new ItemTarefa("b"));

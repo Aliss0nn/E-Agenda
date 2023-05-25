@@ -1,18 +1,19 @@
 ﻿using E_Agenda_winApp.Compartilhado;
+using E_Agenda_winApp.ModuloCompromisso;
 
 namespace E_Agenda_winApp.ModuloTarefa
 {
-    public class ControladorDeTarefa : ControladorBase
+    public class ControladorDeTarefa : ControladorBase, Filtrador
     {
         private RepositorioTarefas repositorioTarefas;
-        private ListagemDeTarefaControl listagemDeTarefa;
+        private TabelaTarefaControl tabelaTarefa;
         protected List<Tarefa> listaRegistros;
 
         public ControladorDeTarefa(RepositorioTarefas repositorioTarefas)
         {
-            this.repositorioTarefas = repositorioTarefas;
+            this.repositorioTarefas = repositorioTarefas;        
         }
-
+        #region tooltips
         public override string ToolTipInserir { get { return "Inserir nova Tarefa"; } }
 
         public override string ToolTipEditar { get { return "Editar Tarefa Existente"; } }
@@ -22,6 +23,12 @@ namespace E_Agenda_winApp.ModuloTarefa
         public override string ToolTipFiltrar { get { return "Filtrar Tarefa Existente"; } }
 
         public override string ToolTipAdicionaritens { get { return "Ver itens"; } }
+        #endregion tooltips
+
+        #region buttons
+        public override bool FiltrarHabilitado => true;
+        public override bool AdicionarItensHabilitado => true;
+        #endregion 
 
         public override void Inserir()
         {
@@ -41,7 +48,7 @@ namespace E_Agenda_winApp.ModuloTarefa
 
         public override void Editar()
         {
-            Tarefa tarefaSelecionada = listagemDeTarefa.ObterTarefaSelecionada();
+            Tarefa tarefaSelecionada = ObterTarefaSelecionada();
 
             if (tarefaSelecionada == null)
             {
@@ -66,9 +73,16 @@ namespace E_Agenda_winApp.ModuloTarefa
             }
         }
 
+        private Tarefa ObterTarefaSelecionada()
+        {
+            int id = tabelaTarefa.ObterIdSelecionado();
+
+            return repositorioTarefas.SelecionarPorId(id);
+        }
+
         public override void Excluir()
         {
-            Tarefa tarefa = listagemDeTarefa.ObterTarefaSelecionada();
+            Tarefa tarefa = ObterTarefaSelecionada();
 
             if (tarefa == null)
             {
@@ -91,7 +105,7 @@ namespace E_Agenda_winApp.ModuloTarefa
 
         private void CarregarTarefas(List<Tarefa> tarefas)
         {
-            listagemDeTarefa.AtualizarRegistros(tarefas);
+            tabelaTarefa.AtualizarRegistros(tarefas);
 
             TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {tarefas.Count} tarefa(s)");
         }
@@ -100,19 +114,19 @@ namespace E_Agenda_winApp.ModuloTarefa
         {
             List<Tarefa> tarefas = repositorioTarefas.SelecionarTodos();
 
-            listagemDeTarefa.AtualizarRegistros(tarefas);
+            tabelaTarefa.AtualizarRegistros(tarefas);
         }
 
         public override UserControl ObterListagem()
         {
-            if (listagemDeTarefa == null)
+            if (tabelaTarefa == null)
             {
-                listagemDeTarefa = new ListagemDeTarefaControl();
+                tabelaTarefa = new TabelaTarefaControl();
             }
 
             CarregarTarefas();
 
-            return listagemDeTarefa;
+            return tabelaTarefa;
         }
 
         public override string ObterTipoCadastro()
@@ -122,7 +136,7 @@ namespace E_Agenda_winApp.ModuloTarefa
 
         public override void Adicionar()
         {
-            Tarefa tarefaSelecionada = listagemDeTarefa.ObterTarefaSelecionada();
+            Tarefa tarefaSelecionada = ObterTarefaSelecionada();
 
             if (tarefaSelecionada == null)
             {
@@ -151,7 +165,7 @@ namespace E_Agenda_winApp.ModuloTarefa
 
         public override void ConcluirItens()
         {
-            Tarefa tarefaSelecionada = listagemDeTarefa.ObterTarefaSelecionada();
+            Tarefa tarefaSelecionada = ObterTarefaSelecionada();
 
             if (tarefaSelecionada == null)
             {
@@ -188,15 +202,18 @@ namespace E_Agenda_winApp.ModuloTarefa
 
         public override void Filtrar()
         {
+            if (tabelaTarefa == null)
+                tabelaTarefa = new TabelaTarefaControl();
+
             TelaFiltroForm telaFiltroTarefa = new TelaFiltroForm();
 
             DialogResult opcaoEscolhida = telaFiltroTarefa.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                List<Tarefa> tarefas;
-
+                
                 StatusTarefaEnum status = telaFiltroTarefa.ObterFiltroTarefa();
+                List<Tarefa> tarefas = null;
 
                 switch (status)
                 {
@@ -218,5 +235,3 @@ namespace E_Agenda_winApp.ModuloTarefa
         }
     }
 }
-
-

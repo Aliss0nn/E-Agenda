@@ -1,12 +1,13 @@
 ﻿using E_Agenda_winApp.Compartilhado;
 using E_Agenda_winApp.ModuloContato;
+using E_Agenda_winApp.ModuloTarefa;
 
 namespace E_Agenda_winApp.ModuloCompromisso
 {
     public class ControladorDeCompromisso : ControladorBase, Filtrador
     {
          private RepositorioCompromisso repositorioCompromisso;
-         private ListaCompromissoControl listaCompromisso;
+         private TabelaCompromissoControl tabelaCompromisso;      
          private RepositorioContato repositorioContato;
 
         public ControladorDeCompromisso(RepositorioCompromisso repositorioCompromisso, RepositorioContato repositorioContato)
@@ -14,7 +15,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
             this.repositorioCompromisso = repositorioCompromisso;
             this.repositorioContato = repositorioContato;
         }
-
+        #region tooltips
         public override string ToolTipInserir { get { return "Inserir novo Compromisso"; } }
 
         public override string ToolTipEditar { get { return "Editar Compromisso Existente"; } }
@@ -24,6 +25,9 @@ namespace E_Agenda_winApp.ModuloCompromisso
         public override string ToolTipFiltrar { get { return "Filtrar Compromisso Existente"; } }
 
         public override string ToolTipAdicionaritens { get { return "Adicionar Itens"; } }
+        #endregion tooltips
+
+        public override bool FiltrarHabilitado => true;
 
         public override void Inserir()
         {         
@@ -43,20 +47,19 @@ namespace E_Agenda_winApp.ModuloCompromisso
         }
         private void CarregarCompromissos(List<Compromisso> compromissos)
         {
-            listaCompromisso.AtualizarRegistros(compromissos);
+            tabelaCompromisso.AtualizarRegistros(compromissos);
         }
-
 
         private void CarregarCompromissos()
         {
             List<Compromisso> compromissos = repositorioCompromisso.SelecionarTodos();
       
-            listaCompromisso.AtualizarRegistros(compromissos);
+            tabelaCompromisso.AtualizarRegistros(compromissos);
         }
 
         public override void Editar()
         {           
-            Compromisso compromisso = listaCompromisso.ObterCompromissoSelecionado();
+            Compromisso compromisso = ObterCompromissoSelecionado();
 
             if (compromisso == null)
             {
@@ -69,7 +72,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
             TelaCompromisso telaCompromisso = new TelaCompromisso();
             telaCompromisso.ObterContatos(this.repositorioContato.SelecionarTodos());
 
-            telaCompromisso.Compromisso = listaCompromisso.ObterCompromissoSelecionado();
+            telaCompromisso.Compromisso = ObterCompromissoSelecionado();
 
             DialogResult opcaoEscolhida = telaCompromisso.ShowDialog();
 
@@ -83,9 +86,16 @@ namespace E_Agenda_winApp.ModuloCompromisso
             }
         }
 
+        private Compromisso ObterCompromissoSelecionado()
+        {
+            int id = tabelaCompromisso.ObterIdSelecionado();
+
+            return repositorioCompromisso.SelecionarPorId(id);
+        }
+
         public override void Excluir()
         {
-            Compromisso compromisso = listaCompromisso.ObterCompromissoSelecionado();
+            Compromisso compromisso = ObterCompromissoSelecionado();
 
             if(compromisso == null)
             {
@@ -109,14 +119,14 @@ namespace E_Agenda_winApp.ModuloCompromisso
       
         public override UserControl ObterListagem()
         {
-           if (listaCompromisso == null)
+           if (tabelaCompromisso == null)
            {
-                listaCompromisso = new ListaCompromissoControl();
+                tabelaCompromisso = new TabelaCompromissoControl();
            }
 
             CarregarCompromissos();
 
-            return listaCompromisso;
+            return tabelaCompromisso;
 
         }
 
@@ -127,8 +137,8 @@ namespace E_Agenda_winApp.ModuloCompromisso
 
         public void Filtrar()
         {
-            if (listaCompromisso == null)
-                listaCompromisso = new ListaCompromissoControl();
+            if (tabelaCompromisso == null)
+                tabelaCompromisso = new TabelaCompromissoControl();
 
             TelaFiltradorForm telaFiltro = new TelaFiltradorForm();
             DialogResult opcaoEscolhida = telaFiltro.ShowDialog();

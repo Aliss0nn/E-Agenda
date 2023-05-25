@@ -26,6 +26,15 @@
             }
         }
 
+        public void ConfigurarTela(Contato contatoSelecionado)
+        {
+            txtId.Text = contatoSelecionado.id.ToString();
+            txtNome.Text = contatoSelecionado.nome;
+            txtTelefone.Text = contatoSelecionado.telefone;
+            txtCargo.Text = contatoSelecionado.cargo;
+            txtEmail.Text = contatoSelecionado.email;
+            txtEmpresa.Text = contatoSelecionado.empresa;
+        }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {          

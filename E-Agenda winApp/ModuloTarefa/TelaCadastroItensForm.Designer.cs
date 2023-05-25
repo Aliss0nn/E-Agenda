@@ -148,7 +148,8 @@
             Controls.Add(txtId);
             Controls.Add(label1);
             Name = "TelaCadastroItensForm";
-            Text = "TelaCadastroItensForm";
+            ShowIcon = false;
+            Text = "Cadastrar Itens";
             ResumeLayout(false);
             PerformLayout();
         }

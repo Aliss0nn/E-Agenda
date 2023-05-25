@@ -98,8 +98,10 @@
             Controls.Add(rdbTodos);
             Controls.Add(btnCancelar);
             Controls.Add(btnFiltrar);
+            HelpButton = true;
             Name = "TelaFiltroForm";
-            Text = "TelaFiltroForm";
+            ShowIcon = false;
+            Text = "Filtrar Tarefas";
             ResumeLayout(false);
             PerformLayout();
         }
