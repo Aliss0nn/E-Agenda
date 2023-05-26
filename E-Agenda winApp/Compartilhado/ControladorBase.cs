@@ -5,8 +5,8 @@
         public abstract string ToolTipInserir { get; }
         public abstract string ToolTipEditar { get; }
         public abstract string ToolTipExcluir { get; }
-        public abstract string ToolTipFiltrar { get; }
-        public abstract string ToolTipAdicionaritens { get; }
+        public virtual string ToolTipFiltrar { get; }
+        public virtual string ToolTipAdicionaritens { get; }
 
         public virtual bool InserirHabilitado { get { return true; } }
         public virtual bool EditarHabilitado { get { return true; } }

@@ -34,7 +34,6 @@
             compromissosMenuItem = new ToolStripMenuItem();
             tarefasMenuItem = new ToolStripMenuItem();
             despesasMenuItem = new ToolStripMenuItem();
-            despesasMenuItem1 = new ToolStripMenuItem();
             categoriasMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             labelRodape = new ToolStripStatusLabel();
@@ -63,7 +62,7 @@
             // 
             // cadastrosMenuItem
             // 
-            cadastrosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { contatosMenuItem, compromissosMenuItem, tarefasMenuItem, despesasMenuItem });
+            cadastrosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { contatosMenuItem, compromissosMenuItem, tarefasMenuItem, despesasMenuItem, categoriasMenuItem });
             cadastrosMenuItem.Name = "cadastrosMenuItem";
             cadastrosMenuItem.Size = new Size(71, 20);
             cadastrosMenuItem.Text = "Cadastros";
@@ -71,42 +70,37 @@
             // contatosMenuItem
             // 
             contatosMenuItem.Name = "contatosMenuItem";
-            contatosMenuItem.Size = new Size(154, 22);
+            contatosMenuItem.Size = new Size(180, 22);
             contatosMenuItem.Text = "Contatos";
             contatosMenuItem.Click += contatosMenuItem_Click;
             // 
             // compromissosMenuItem
             // 
             compromissosMenuItem.Name = "compromissosMenuItem";
-            compromissosMenuItem.Size = new Size(154, 22);
+            compromissosMenuItem.Size = new Size(180, 22);
             compromissosMenuItem.Text = "Compromissos";
             compromissosMenuItem.Click += compromissosMenuItem_Click;
             // 
             // tarefasMenuItem
             // 
             tarefasMenuItem.Name = "tarefasMenuItem";
-            tarefasMenuItem.Size = new Size(154, 22);
+            tarefasMenuItem.Size = new Size(180, 22);
             tarefasMenuItem.Text = "Tarefas";
             tarefasMenuItem.Click += tarefasMenuItem_Click;
             // 
             // despesasMenuItem
             // 
-            despesasMenuItem.DropDownItems.AddRange(new ToolStripItem[] { despesasMenuItem1, categoriasMenuItem });
             despesasMenuItem.Name = "despesasMenuItem";
-            despesasMenuItem.Size = new Size(154, 22);
+            despesasMenuItem.Size = new Size(180, 22);
             despesasMenuItem.Text = "Despesas";
-            // 
-            // despesasMenuItem1
-            // 
-            despesasMenuItem1.Name = "despesasMenuItem1";
-            despesasMenuItem1.Size = new Size(130, 22);
-            despesasMenuItem1.Text = "Despesas";
+            despesasMenuItem.Click += despesasMenuItem_Click;
             // 
             // categoriasMenuItem
             // 
             categoriasMenuItem.Name = "categoriasMenuItem";
-            categoriasMenuItem.Size = new Size(130, 22);
+            categoriasMenuItem.Size = new Size(180, 22);
             categoriasMenuItem.Text = "Categorias";
+            categoriasMenuItem.Click += categoriasMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -239,8 +233,6 @@
         private ToolStripMenuItem compromissosMenuItem;
         private ToolStripMenuItem tarefasMenuItem;
         private ToolStripMenuItem despesasMenuItem;
-        private ToolStripMenuItem despesasMenuItem1;
-        private ToolStripMenuItem categoriasMenuItem;
         private StatusStrip statusStrip1;
         private ToolStrip barraFerramentas;
         private ToolStripButton btnInserir;
@@ -252,5 +244,7 @@
         private ToolStripButton btnFiltrar;
         private ToolStripButton btnItens;
         private ToolStripStatusLabel labelRodape;
+        private ToolStripMenuItem categoriasToolStripMenuItem;
+        private ToolStripMenuItem categoriasMenuItem;
     }
 }

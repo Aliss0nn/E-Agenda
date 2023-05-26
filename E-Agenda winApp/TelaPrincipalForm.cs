@@ -1,6 +1,8 @@
 using E_Agenda_winApp.Compartilhado;
+using E_Agenda_winApp.ModuloCategorias;
 using E_Agenda_winApp.ModuloCompromisso;
 using E_Agenda_winApp.ModuloContato;
+using E_Agenda_winApp.ModuloDespesasECategorias;
 using E_Agenda_winApp.ModuloTarefa;
 
 namespace E_Agenda_winApp
@@ -10,13 +12,18 @@ namespace E_Agenda_winApp
         private ControladorBase controlador;
         private RepositorioTarefas repositorioTarefas = new RepositorioTarefas(new List<Tarefa>());
         private RepositorioContato repositorioContato = new RepositorioContato();
+        private RepositorioCategorias repositorioCategorias = new RepositorioCategorias(new List<Categorias>());
         private RepositorioCompromisso repositorioCompromisso = new RepositorioCompromisso(new List<Compromisso>());
+
+        private RepositorioDespesa repositorioDespesa = new RepositorioDespesa(new List<Despesas>());
         private static TelaPrincipalForm telaPrincipal;
+        private TabelaDespesaControl tabelaDespesa;
+        private TabelaCategoriasControl tabelaCategorias;
 
 
         public TelaPrincipalForm()
         {
-            PopularListas(repositorioCompromisso, repositorioContato, repositorioTarefas);
+            PopularListas(repositorioCompromisso, repositorioContato, repositorioTarefas, repositorioDespesa, repositorioCategorias);
             InitializeComponent();
 
         }
@@ -38,7 +45,7 @@ namespace E_Agenda_winApp
         }
 
         private void contatosMenuItem_Click(object sender, EventArgs e)
-        {         
+        {
             controlador = new ControladorDeContato(repositorioContato);
 
             ConfigurarTelaPrincipal(controlador);
@@ -87,7 +94,7 @@ namespace E_Agenda_winApp
             btnEditar.Enabled = controlador.EditarHabilitado;
             btnExcluir.Enabled = controlador.ExcluirHabilitado;
             btnFiltrar.Enabled = controlador.FiltrarHabilitado;
-            btnItens.Enabled = controlador.AdicionarItensHabilitado;          
+            btnItens.Enabled = controlador.AdicionarItensHabilitado;
         }
 
         private void tarefasMenuItem_Click(object sender, EventArgs e)
@@ -98,13 +105,24 @@ namespace E_Agenda_winApp
         }
 
         private void compromissosMenuItem_Click(object sender, EventArgs e)
-        {        
+        {
             controlador = new ControladorDeCompromisso(repositorioCompromisso, repositorioContato);
 
             ConfigurarTelaPrincipal(controlador);
         }
+     
+        private void despesasMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorDeDespesas(tabelaDespesa, repositorioDespesa,repositorioCategorias);
 
+            ConfigurarTelaPrincipal(controlador);
+        }
+        private void categoriasMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorCategorias(tabelaCategorias, repositorioCategorias);
 
+            ConfigurarTelaPrincipal(controlador);
+        }
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
@@ -168,7 +186,8 @@ namespace E_Agenda_winApp
         }
 
 
-        public void PopularListas(RepositorioCompromisso repositorio, RepositorioContato repositorioContato, RepositorioTarefas repositorioTarefa)
+        public void PopularListas(RepositorioCompromisso repositorio, RepositorioContato repositorioContato, RepositorioTarefas repositorioTarefa,
+            RepositorioDespesa repositorioDespesa, RepositorioCategorias repositorioCategorias)
         {
             Contato contato01 = new Contato("4998234402", "aaa@hotmail.com", "Estagiário", "Alisson Scopel", "Klabin");
             Contato contato02 = new Contato("4932893292", "bbb@gmail.com", "Estagiário", "Felipe Maines", "NDD");
@@ -213,8 +232,24 @@ namespace E_Agenda_winApp
             repositorioTarefa.Inserir(t2);
             repositorioTarefa.Inserir(t3);
 
+            Categorias categoria01 = new Categorias(1, "ANIVERSÁRIO");
+            Categorias categoria02 = new Categorias(2, "CHURRASCO");
+            Categorias categoria03 = new Categorias(3, "FESTA");
+
+            repositorioCategorias.Inserir(categoria01);
+            repositorioCategorias.Inserir(categoria02);
+            repositorioCategorias.Inserir(categoria03);
+
+
+            Despesas despesas01 = new Despesas(1, "Churras", "400", DateTime.Now, PagamentoCategoriaEnum.Dinheiro, categoria01);
+            Despesas despesas02 = new Despesas(1, "Consertar carro", "1100", DateTime.Now, PagamentoCategoriaEnum.CartaoCredito, categoria02);
+            Despesas despesas03 = new Despesas(1, "Festa", "500", DateTime.Now, PagamentoCategoriaEnum.CartaoDebito, categoria03);
+
+            repositorioDespesa.Inserir(despesas01);
+            repositorioDespesa.Inserir(despesas02);
+            repositorioDespesa.Inserir(despesas03);
         }
 
-
+       
     }
 }

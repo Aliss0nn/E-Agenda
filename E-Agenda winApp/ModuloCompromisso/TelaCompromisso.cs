@@ -43,7 +43,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
         public void ObterContatos(List<Contato> contatos)
         {
             this.contatos = contatos;
-
+            
             foreach (Contato c in contatos)
             {
                 CbContatos.Items.Add(c);
@@ -62,9 +62,6 @@ namespace E_Agenda_winApp.ModuloCompromisso
             Contato contato = contatos.Find(x => x.nome == CbContatos.SelectedItem);
 
             compromisso = new Compromisso(assunto, local, data, horaInicial, horaFinal, contato);
-
-           
-
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

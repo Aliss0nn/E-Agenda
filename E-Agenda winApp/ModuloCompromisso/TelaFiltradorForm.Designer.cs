@@ -82,7 +82,7 @@
             btnFiltrar.Size = new Size(118, 38);
             btnFiltrar.TabIndex = 4;
             btnFiltrar.Text = "Filtrar";
-            btnFiltrar.UseVisualStyleBackColor = true;
+            btnFiltrar.UseVisualStyleBackColor = true;            
             // 
             // btnCancelar
             // 
