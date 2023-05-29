@@ -73,13 +73,13 @@ namespace E_Agenda_winApp.ModuloDespesasECategorias
                 DialogResult = DialogResult.None;
             }
         }
-        public void ObterCategorias(List<Categorias> categoria)
+        public void ObterCategorias(List<Categorias> categorias)
         {
-            this.categorias = categoria;
+            this.categorias = categorias;
 
-            foreach (Categorias c in categorias)
+            foreach (Categorias categoria in categorias)
             {            
-                cbCategorias.Items.Add(c);
+                cbCategorias.Items.Add(categoria);
             }
         }
        

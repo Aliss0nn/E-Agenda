@@ -10,7 +10,7 @@ namespace E_Agenda_winApp.ModuloCategorias
 {
     public class Categorias : EntidadeBase<Categorias>
     {
-        public string titulo = "";
+        public string titulo;
 
         public Categorias(int id, string titulo)
         {

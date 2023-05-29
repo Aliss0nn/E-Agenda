@@ -3,13 +3,34 @@ using E_Agenda_winApp.ModuloContato;
 
 namespace E_Agenda_winApp.ModuloCategorias
 {
-    public class RepositorioCategorias : RepositorioBase<Categorias>
+    public class RepositorioCategorias 
     {
         List<Categorias> categorias = new List<Categorias>();
+        static int contador;
 
-        public RepositorioCategorias(List<Categorias> listacategorias)
+       
+        public void Inserir(Categorias categoria)
         {
-            this.listaRegistros = listacategorias;
+            contador++;
+            categoria.id = contador;
+            categorias.Add(categoria);
+        }
+        public void Editar(Categorias categoria)
+        {
+            Categorias categoriaSelecionada = SelecionarPorId(categoria.id);
+
+            categoriaSelecionada.id = categoria.id;
+            categoriaSelecionada.titulo = categoria.titulo;
+        }
+
+        public Categorias SelecionarPorId(int id)
+        {
+            return categorias.FirstOrDefault(x => id == id);
+        }
+
+        public void Excluir(Categorias categoria)
+        {
+            categorias.Remove(categoria);
         }
 
         public List<Categorias> SelecionarTodos()

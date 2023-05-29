@@ -1,6 +1,6 @@
 ﻿namespace E_Agenda_winApp.ModuloCategorias
 {
-    partial class TabelaCategoriasControl
+    partial class ListagemCategoriaControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,33 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            gridCategoria = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)gridCategoria).BeginInit();
+            listCategorias = new ListBox();
             SuspendLayout();
             // 
-            // gridCategoria
+            // listCategorias
             // 
-            gridCategoria.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridCategoria.Dock = DockStyle.Fill;
-            gridCategoria.Location = new Point(0, 0);
-            gridCategoria.Name = "gridCategoria";
-            gridCategoria.RowTemplate.Height = 25;
-            gridCategoria.Size = new Size(567, 398);
-            gridCategoria.TabIndex = 0;
+            listCategorias.Dock = DockStyle.Fill;
+            listCategorias.FormattingEnabled = true;
+            listCategorias.ItemHeight = 15;
+            listCategorias.Location = new Point(0, 0);
+            listCategorias.Name = "listCategorias";
+            listCategorias.Size = new Size(484, 323);
+            listCategorias.TabIndex = 0;
             // 
-            // TabelaCategoriasControl
+            // ListagemCategoriaControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(gridCategoria);
-            Name = "TabelaCategoriasControl";
-            Size = new Size(567, 398);
-            ((System.ComponentModel.ISupportInitialize)gridCategoria).EndInit();
+            Controls.Add(listCategorias);
+            Name = "ListagemCategoriaControl";
+            Size = new Size(484, 323);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView gridCategoria;
+        private ListBox listCategorias;
     }
 }

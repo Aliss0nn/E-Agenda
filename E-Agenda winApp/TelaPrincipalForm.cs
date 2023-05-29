@@ -12,13 +12,13 @@ namespace E_Agenda_winApp
         private ControladorBase controlador;
         private RepositorioTarefas repositorioTarefas = new RepositorioTarefas(new List<Tarefa>());
         private RepositorioContato repositorioContato = new RepositorioContato();
-        private RepositorioCategorias repositorioCategorias = new RepositorioCategorias(new List<Categorias>());
+        private RepositorioCategorias repositorioCategorias = new RepositorioCategorias();
         private RepositorioCompromisso repositorioCompromisso = new RepositorioCompromisso(new List<Compromisso>());
 
-        private RepositorioDespesa repositorioDespesa = new RepositorioDespesa(new List<Despesas>());
+        private RepositorioDespesa repositorioDespesa = new RepositorioDespesa();
         private static TelaPrincipalForm telaPrincipal;
         private TabelaDespesaControl tabelaDespesa;
-        private TabelaCategoriasControl tabelaCategorias;
+        
 
 
         public TelaPrincipalForm()
@@ -119,7 +119,7 @@ namespace E_Agenda_winApp
         }
         private void categoriasMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorCategorias(tabelaCategorias, repositorioCategorias);
+            controlador = new ControladorCategorias(repositorioCategorias);
 
             ConfigurarTelaPrincipal(controlador);
         }

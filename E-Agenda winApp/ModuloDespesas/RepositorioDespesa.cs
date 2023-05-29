@@ -1,19 +1,21 @@
-﻿using E_Agenda_winApp.Compartilhado;
-using E_Agenda_winApp.ModuloCompromisso;
-using E_Agenda_winApp.ModuloContato;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace E_Agenda_winApp.ModuloDespesasECategorias
+﻿namespace E_Agenda_winApp.ModuloDespesasECategorias
 {
-    public class RepositorioDespesa : RepositorioBase<Despesas> 
-    {     
-        public RepositorioDespesa(List<Despesas> despesas)
+    public class RepositorioDespesa 
+    {
+        List<Despesas> despesas = new List<Despesas>();
+
+        private static int contador;
+
+        public void Inserir(Despesas despesa)
         {
-            this.listaRegistros = despesas;
+            contador++;
+            despesa.id = contador;
+            despesas.Add(despesa);
+        }
+
+        public List<Despesas> SelecionarTodos()
+        {
+            return despesas;
         }
 
         public void Editar(Despesas despesas)
@@ -25,6 +27,16 @@ namespace E_Agenda_winApp.ModuloDespesasECategorias
             despesaSelecionada.pagamento = despesas.pagamento;
             despesaSelecionada.valor = despesas.valor;
             despesaSelecionada.data = despesas.data;
+        }
+
+        public Despesas SelecionarPorId(int id)
+        {
+            return despesas.FirstOrDefault(x => id == id);
+        }
+
+        public void Excluir(Despesas despesa)
+        {
+            despesas.Remove(despesa);
         }
     }
 }

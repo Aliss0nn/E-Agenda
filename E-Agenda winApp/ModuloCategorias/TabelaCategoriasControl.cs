@@ -1,4 +1,5 @@
 ﻿using E_Agenda_winApp.Compartilhado;
+using E_Agenda_winApp.ModuloContato;
 using E_Agenda_winApp.ModuloDespesasECategorias;
 using System;
 using System.Collections.Generic;
@@ -20,17 +21,17 @@ namespace E_Agenda_winApp.ModuloCategorias
 
             ConfigurarColunas();
 
-            gridCategorias.ConfigurarGridSomenteLeitura();
+            gridCategoria.ConfigurarGridSomenteLeitura();
 
-            gridCategorias.ConfigurarGridZebrado();
+            gridCategoria.ConfigurarGridZebrado();
         }
         public void AtualizarRegistros(List<Categorias> categorias)
         {
-            gridCategorias.Rows.Clear();
+            gridCategoria.Rows.Clear();
 
-            foreach (Categorias categoria in categorias)
+            foreach (Categorias c in categorias)
             {
-                gridCategorias.Rows.Add(categoria.id, categoria.titulo);
+                gridCategoria.Rows.Add(c.id, c.titulo);
             }
         }
         private void ConfigurarColunas()
@@ -46,10 +47,10 @@ namespace E_Agenda_winApp.ModuloCategorias
                 {
                     Name = "titulo",
                     HeaderText = "Título"
-                },             
+                },
             };
 
-            gridCategorias.Columns.AddRange(colunas);
+            gridCategoria.Columns.AddRange(colunas);
         }
 
         public int ObterIdSelecionado()
@@ -58,7 +59,7 @@ namespace E_Agenda_winApp.ModuloCategorias
 
             try
             {
-                id = Convert.ToInt32(gridCategorias.SelectedRows[0].Cells["id"].Value);
+                id = Convert.ToInt32(gridCategoria.SelectedRows[0].Cells["id"].Value);
             }
             catch
             {

@@ -11,12 +11,11 @@ namespace E_Agenda_winApp.ModuloCategorias
 {
     public class ControladorCategorias : ControladorBase
     {
-        private TabelaCategoriasControl tabelaCategorias;
+        private TabelaCategoriasControl tabelaCategoria;
         private RepositorioCategorias repositorioCategorias;
 
-        public ControladorCategorias(TabelaCategoriasControl tabelaCategorias, RepositorioCategorias repositorioCategorias)
-        {
-            this.tabelaCategorias = tabelaCategorias;
+        public ControladorCategorias(RepositorioCategorias repositorioCategorias)
+        {           
             this.repositorioCategorias = repositorioCategorias;
         }
 
@@ -64,7 +63,7 @@ namespace E_Agenda_winApp.ModuloCategorias
             {
                 categoria = telaCategorias.Categorias;
 
-                repositorioCategorias.Editar(categoria.id, categoria);
+                repositorioCategorias.Editar(categoria);
 
                 CarregarCategorias();
             }
@@ -72,7 +71,7 @@ namespace E_Agenda_winApp.ModuloCategorias
 
         private Categorias ObterCategoriaSelecionada()
         {
-            int id = tabelaCategorias.ObterIdSelecionado();
+            int id = tabelaCategoria.ObterIdSelecionado();
 
             return repositorioCategorias.SelecionarPorId(id);
         }
@@ -99,25 +98,24 @@ namespace E_Agenda_winApp.ModuloCategorias
                 CarregarCategorias();
             }
         }
-
-      
+    
         public override UserControl ObterListagem()
         {
-            if (tabelaCategorias == null)
+            if (tabelaCategoria == null)
             {
-                tabelaCategorias = new TabelaCategoriasControl();
+                tabelaCategoria = new TabelaCategoriasControl();
             }
 
             CarregarCategorias();
 
-            return tabelaCategorias;
+            return tabelaCategoria;
         }
 
         private void CarregarCategorias()
         {
             List<Categorias> categorias = repositorioCategorias.SelecionarTodos();
 
-            tabelaCategorias.AtualizarRegistros(categorias);
+            tabelaCategoria.AtualizarRegistros(categorias);
         }
 
         public override string ObterTipoCadastro()

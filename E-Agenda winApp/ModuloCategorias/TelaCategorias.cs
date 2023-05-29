@@ -16,7 +16,7 @@ namespace E_Agenda_winApp.ModuloDespesasECategorias
     public partial class TelaCategorias : Form
     {
         private Categorias categoria;
-        private List<Categorias> listCategoria;
+        
 
         public TelaCategorias()
         {
