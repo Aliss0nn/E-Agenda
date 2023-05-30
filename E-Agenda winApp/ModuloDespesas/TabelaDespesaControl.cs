@@ -21,7 +21,7 @@ namespace E_Agenda_winApp.ModuloDespesasECategorias
 
             foreach (Despesas despesa in despesas)
             {
-                gridDespesa.Rows.Add(despesa.id,despesa.descricao,despesa.valor,despesa.data,despesa.pagamento);
+                gridDespesa.Rows.Add(despesa.id, despesa.descricao, despesa.valor, despesa.data, despesa.pagamento, despesa.categoria);
             }
         }
         private void ConfigurarColunas()
@@ -52,7 +52,12 @@ namespace E_Agenda_winApp.ModuloDespesasECategorias
                 {
                     Name = "pagamento",
                     HeaderText = "Forma de Pagamento"
-                },             
+                },
+                 new DataGridViewTextBoxColumn()
+                {
+                    Name = "categoria",
+                    HeaderText = "Categoria"
+                },
             };
 
             gridDespesa.Columns.AddRange(colunas);

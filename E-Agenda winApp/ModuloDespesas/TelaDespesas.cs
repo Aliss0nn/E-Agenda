@@ -1,6 +1,5 @@
 ﻿using E_Agenda_winApp.Compartilhado;
 using E_Agenda_winApp.ModuloCategorias;
-using E_Agenda_winApp.ModuloContato;
 using E_Agenda_winApp.ModuloTarefa;
 
 namespace E_Agenda_winApp.ModuloDespesasECategorias
@@ -16,7 +15,8 @@ namespace E_Agenda_winApp.ModuloDespesasECategorias
             InitializeComponent();
 
             this.ConfigurarDialog();
-            CarregarPagamentos();        
+            
+            CarregarPagamentos();
         }
 
         public Despesas Despesas
@@ -39,6 +39,7 @@ namespace E_Agenda_winApp.ModuloDespesasECategorias
             txtId.Text = despesa.id.ToString();
             txtDescricao.Text = despesa.descricao;
             txtValor.Text = (despesa.valor.ToString());
+                    
         }
 
         private void CarregarPagamentos()
@@ -59,10 +60,10 @@ namespace E_Agenda_winApp.ModuloDespesasECategorias
             string valor = txtValor.Text;
             PagamentoCategoriaEnum pagamento = (PagamentoCategoriaEnum)cbPagamento.SelectedItem;
             DateTime data = dataInicio.Value;
-          
+
             Categorias categoria = categorias.Find(x => x.titulo == cbCategorias.SelectedItem);
 
-            despesas = new Despesas(id, descricao, valor, data, pagamento,categoria);
+            despesas = new Despesas(id, descricao, valor, data, pagamento, categoria);
 
             string[] erros = despesas.Validar();
 
@@ -78,10 +79,9 @@ namespace E_Agenda_winApp.ModuloDespesasECategorias
             this.categorias = categorias;
 
             foreach (Categorias categoria in categorias)
-            {            
+            {
                 cbCategorias.Items.Add(categoria);
             }
-        }
-       
+        }      
     }
 }

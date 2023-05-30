@@ -7,11 +7,11 @@ namespace E_Agenda_winApp.ModuloDespesasECategorias
     {
         private TabelaDespesaControl tabelaDespesa;
         private RepositorioDespesa repositorioDespesa;
-        private RepositorioCategorias repositorioCategorias;
-
+        private IRepositorioCategorias repositorioCategorias;
+      
         public ControladorDeDespesas(TabelaDespesaControl tabelaDespesa, 
             RepositorioDespesa repositorioDespesa,
-            RepositorioCategorias repositorioCategorias)
+            IRepositorioCategorias repositorioCategorias)
         {
             this.tabelaDespesa = tabelaDespesa;
             this.repositorioDespesa = repositorioDespesa;

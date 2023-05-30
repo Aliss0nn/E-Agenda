@@ -5,10 +5,10 @@ namespace E_Agenda_winApp.ModuloContato
 {
     public class ControladorDeContato : ControladorBase
     {
-        private RepositorioContato repositorioContato;
+        private IRepositorioContato repositorioContato;
         private TabelaContatoControl tabelaContato;
 
-        public ControladorDeContato(RepositorioContato repositorioContato) 
+        public ControladorDeContato(IRepositorioContato repositorioContato) 
         {
             this.repositorioContato = repositorioContato;
         }
@@ -60,7 +60,7 @@ namespace E_Agenda_winApp.ModuloContato
             {
                 contato = telaContatoForm.Contato;
 
-                repositorioContato.Editar(contato);
+                repositorioContato.Editar(contato.id,contato);
 
                 CarregarContatos();
             }

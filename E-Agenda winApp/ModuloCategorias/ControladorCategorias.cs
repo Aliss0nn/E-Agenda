@@ -12,9 +12,9 @@ namespace E_Agenda_winApp.ModuloCategorias
     public class ControladorCategorias : ControladorBase
     {
         private TabelaCategoriasControl tabelaCategoria;
-        private RepositorioCategorias repositorioCategorias;
+        private IRepositorioCategorias repositorioCategorias;
 
-        public ControladorCategorias(RepositorioCategorias repositorioCategorias)
+        public ControladorCategorias(IRepositorioCategorias repositorioCategorias)
         {           
             this.repositorioCategorias = repositorioCategorias;
         }
@@ -63,7 +63,7 @@ namespace E_Agenda_winApp.ModuloCategorias
             {
                 categoria = telaCategorias.Categorias;
 
-                repositorioCategorias.Editar(categoria);
+                repositorioCategorias.Editar(categoria.id,categoria);
 
                 CarregarCategorias();
             }

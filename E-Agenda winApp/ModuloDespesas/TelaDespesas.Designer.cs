@@ -161,10 +161,10 @@
             // cbCategorias
             // 
             cbCategorias.FormattingEnabled = true;
-            cbCategorias.Location = new Point(78, 192);
+            cbCategorias.Location = new Point(93, 197);
             cbCategorias.Name = "cbCategorias";
-            cbCategorias.Size = new Size(294, 166);
-            cbCategorias.TabIndex = 14;
+            cbCategorias.Size = new Size(252, 130);
+            cbCategorias.TabIndex = 15;
             // 
             // TelaDespesas
             // 

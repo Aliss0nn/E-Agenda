@@ -47,16 +47,17 @@
             }
         }
 
+        
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(txtId.Text);
+            //int id = Convert.ToInt32(txtId.Text);
             string nome = txtNomeDaTarefa.Text;
             PrioridadeTarefaEnum prioridade = (PrioridadeTarefaEnum)cmbPrioridade.SelectedItem;
             DateTime dataInicial = dtInicio.Value;
             DateTime dataFinal = dtFinal.Value;
 
 
-            tarefa = new Tarefa(id,nome, prioridade, dataFinal, dataInicial);
+            tarefa = new Tarefa(nome, prioridade, dataFinal, dataInicial);
         }
 
         private void ConfigurarData(DateTimePicker data)
@@ -90,7 +91,7 @@
             DateTime dataCriacao = dtInicio.Value;
             DateTime dataFinal = dtFinal.Value;
 
-            return new Tarefa(id,titulo, prioridade, dataCriacao, dataFinal);
+            return new Tarefa(titulo, prioridade, dataCriacao, dataFinal);
         }
     }
 }

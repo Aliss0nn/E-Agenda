@@ -3,12 +3,12 @@ using E_Agenda_winApp.ModuloContato;
 
 namespace E_Agenda_winApp.ModuloTarefa
 {
-    public class RepositorioTarefas : RepositorioBase<Tarefa>
+    public class RepositorioTarefasEmMemoria : RepositorioBase<Tarefa>,IRepositorioTarefa
     {
         List<Tarefa> tarefas = new List<Tarefa>();       
         public int contador;
 
-        public RepositorioTarefas(List<Tarefa> tarefas)
+        public RepositorioTarefasEmMemoria(List<Tarefa> tarefas)
         {
             listaRegistros = tarefas;
         }

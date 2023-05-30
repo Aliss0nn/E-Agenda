@@ -1,13 +1,8 @@
 ﻿using E_Agenda_winApp.Compartilhado;
-using E_Agenda_winApp.ModuloCompromisso;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace E_Agenda_winApp.ModuloCategorias
 {
+    [Serializable]
     public class Categorias : EntidadeBase<Categorias>
     {
         public string titulo;

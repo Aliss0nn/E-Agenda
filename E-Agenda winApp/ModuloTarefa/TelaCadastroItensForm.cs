@@ -30,6 +30,7 @@ namespace E_Agenda_winApp.ModuloTarefa
 
             listItens.Items.AddRange(tarefa.itens.ToArray());
         }
+       
 
         private void btnGravar_Click(object sender, EventArgs e)
         {

@@ -5,11 +5,11 @@ namespace E_Agenda_winApp.ModuloTarefa
 {
     public class ControladorDeTarefa : ControladorBase, Filtrador
     {
-        private RepositorioTarefas repositorioTarefas;
+        private IRepositorioTarefa repositorioTarefas;
         private TabelaTarefaControl tabelaTarefa;
         protected List<Tarefa> listaRegistros;
 
-        public ControladorDeTarefa(RepositorioTarefas repositorioTarefas)
+        public ControladorDeTarefa(IRepositorioTarefa repositorioTarefas)
         {
             this.repositorioTarefas = repositorioTarefas;        
         }
@@ -38,7 +38,7 @@ namespace E_Agenda_winApp.ModuloTarefa
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                Tarefa tarefa = telaTarefa.Tarefa;
+                Tarefa tarefa = telaTarefa.ObterTarefa();
 
                 repositorioTarefas.Inserir(tarefa);
 

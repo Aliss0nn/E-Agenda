@@ -1,5 +1,6 @@
 ﻿namespace E_Agenda_winApp.ModuloTarefa
 {
+    [Serializable]
     public class Itens
     {
         public string descricao;

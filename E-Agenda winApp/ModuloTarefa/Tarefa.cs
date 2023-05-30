@@ -2,6 +2,7 @@
 
 namespace E_Agenda_winApp.ModuloTarefa
 {
+    [Serializable]
     public class ItemTarefa
     {
         public string titulo;
@@ -35,7 +36,7 @@ namespace E_Agenda_winApp.ModuloTarefa
         }
     }
 
-
+    [Serializable]
     public class Tarefa : EntidadeBase<Tarefa>
     {      
         public string nome;
@@ -45,7 +46,7 @@ namespace E_Agenda_winApp.ModuloTarefa
         public List<ItemTarefa> itens;
         public decimal percentualConcluido;
 
-        public Tarefa(int id, string nome, PrioridadeTarefaEnum prioridade, DateTime dataInicial, DateTime dataFinal)
+        public Tarefa(string nome, PrioridadeTarefaEnum prioridade, DateTime dataInicial, DateTime dataFinal)
         {
             this.id = id;
             this.nome = nome;

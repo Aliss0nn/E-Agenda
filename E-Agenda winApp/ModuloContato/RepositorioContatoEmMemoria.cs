@@ -3,7 +3,7 @@ using E_Agenda_winApp.ModuloTarefa;
 
 namespace E_Agenda_winApp.ModuloContato
 {
-    public class RepositorioContato 
+    public class RepositorioContatoEmMemoria 
     {
         List<Contato> contatos = new List<Contato>();
 
@@ -40,6 +40,7 @@ namespace E_Agenda_winApp.ModuloContato
         {
             contatos.Remove(contato);
         }
+   
     }
 }
 

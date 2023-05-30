@@ -1,5 +1,7 @@
 ﻿namespace E_Agenda_winApp.Compartilhado
 {
+    [Serializable]
+
     public abstract class EntidadeBase<TEntidade>
     {
         public int id;
