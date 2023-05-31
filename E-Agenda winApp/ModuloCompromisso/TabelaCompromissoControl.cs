@@ -49,7 +49,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
 
             foreach (Compromisso compromisso in compromissos)
             {
-                gridCompromisso.Rows.Add(compromisso.id,compromisso.assunto,compromisso.contato.nome,compromisso.data);
+                gridCompromisso.Rows.Add(compromisso.id,compromisso.assunto,compromisso.data);
             }
         }
 

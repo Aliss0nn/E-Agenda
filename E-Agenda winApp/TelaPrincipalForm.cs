@@ -2,6 +2,7 @@ using E_Agenda_winApp.Compartilhado;
 using E_Agenda_winApp.ModuloCategorias;
 using E_Agenda_winApp.ModuloCompromisso;
 using E_Agenda_winApp.ModuloContato;
+using E_Agenda_winApp.ModuloDespesas;
 using E_Agenda_winApp.ModuloDespesasECategorias;
 using E_Agenda_winApp.ModuloTarefa;
 
@@ -13,9 +14,9 @@ namespace E_Agenda_winApp
         private IRepositorioTarefa repositorioTarefas = new RepositorioTarefaEmArquivo();
         private IRepositorioContato repositorioContato = new RepositorioContatoEmArquivo();
         private IRepositorioCategorias repositorioCategorias = new RepositorioCategoriaEmArquivo();
-        private RepositorioCompromisso repositorioCompromisso = new RepositorioCompromisso(new List<Compromisso>());
+        private IRepositorioCompromisso repositorioCompromisso = new RepositorioCompromissoEmArquivo();
 
-        private RepositorioDespesa repositorioDespesa = new RepositorioDespesa();
+        private IRepositorioDespesas repositorioDespesa = new RepositorioDespesasEmArquivo();
         private static TelaPrincipalForm telaPrincipal;
         private TabelaDespesaControl tabelaDespesa;
         
@@ -104,7 +105,7 @@ namespace E_Agenda_winApp
 
         private void compromissosMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorDeCompromisso(repositorioCompromisso);
+            controlador = new ControladorDeCompromisso(repositorioCompromisso,repositorioContato);
 
             ConfigurarTelaPrincipal(controlador);
         }

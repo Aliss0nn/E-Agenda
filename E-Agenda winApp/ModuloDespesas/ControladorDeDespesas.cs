@@ -1,16 +1,17 @@
 ﻿using E_Agenda_winApp.Compartilhado;
 using E_Agenda_winApp.ModuloCategorias;
+using E_Agenda_winApp.ModuloDespesas;
 
 namespace E_Agenda_winApp.ModuloDespesasECategorias
 {
     public class ControladorDeDespesas : ControladorBase
     {
         private TabelaDespesaControl tabelaDespesa;
-        private RepositorioDespesa repositorioDespesa;
+        private IRepositorioDespesas repositorioDespesa;
         private IRepositorioCategorias repositorioCategorias;
       
-        public ControladorDeDespesas(TabelaDespesaControl tabelaDespesa, 
-            RepositorioDespesa repositorioDespesa,
+        public ControladorDeDespesas(TabelaDespesaControl tabelaDespesa,
+            IRepositorioDespesas repositorioDespesa,
             IRepositorioCategorias repositorioCategorias)
         {
             this.tabelaDespesa = tabelaDespesa;
@@ -66,7 +67,7 @@ namespace E_Agenda_winApp.ModuloDespesasECategorias
             {
                 despesa = telaDespesas.Despesas;
 
-                repositorioDespesa.Editar(despesa);
+                repositorioDespesa.Editar(despesa.id,despesa);
 
                 CarregarDespesas();
             }

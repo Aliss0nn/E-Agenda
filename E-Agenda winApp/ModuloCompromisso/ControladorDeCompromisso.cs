@@ -6,15 +6,17 @@ namespace E_Agenda_winApp.ModuloCompromisso
 {
     public class ControladorDeCompromisso : ControladorBase, Filtrador
     {
-         private RepositorioCompromisso repositorioCompromisso;
+         private IRepositorioCompromisso repositorioCompromisso;
          private TabelaCompromissoControl tabelaCompromisso;      
          private IRepositorioContato repositorioContato;
 
-        public ControladorDeCompromisso(RepositorioCompromisso repositorioCompromisso)
+        public ControladorDeCompromisso(IRepositorioCompromisso repositorioCompromisso, IRepositorioContato repositorioContato)
         {
             this.repositorioCompromisso = repositorioCompromisso;
             this.repositorioContato = repositorioContato;
         }
+
+
         #region tooltips
         public override string ToolTipInserir { get { return "Inserir novo Compromisso"; } }
 
@@ -80,7 +82,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
             {
                 compromisso = telaCompromisso.Compromisso;
 
-                repositorioCompromisso.Editar(compromisso);
+                repositorioCompromisso.Editar(compromisso.id,compromisso);
 
                 CarregarCompromissos();
             }

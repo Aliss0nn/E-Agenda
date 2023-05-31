@@ -9,6 +9,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace E_Agenda_winApp.ModuloDespesasECategorias
 {
+    [Serializable]
     public class Despesas : EntidadeBase<Despesas>
     {
         public string descricao = "";
