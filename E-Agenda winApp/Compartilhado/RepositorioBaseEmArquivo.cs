@@ -1,102 +1,65 @@
-﻿using System.Runtime.Serialization.Formatters.Binary;
-
-namespace E_Agenda_winApp.Compartilhado
+﻿namespace E_Agenda_winApp.Compartilhado
 {
-    public class RepositorioBaseEmArquivo<TEntidade> where TEntidade : EntidadeBase<TEntidade>
+    public abstract class RepositorioBaseEmArquivo<TEntidade> where TEntidade : EntidadeBase<TEntidade>
     {
-        protected int contadorRegistros = 0;
+        private int contador;
+        protected ContextoDados contextoDados;
 
-        protected List<TEntidade> listaRegistros = new List<TEntidade>();
+        protected abstract List<TEntidade> ObterRegistros();
 
-        protected string nomeArquivo = "C:\\temp\\registros\\dados-registros.bin";
-
-        protected string NomeArquivo
+        public RepositorioBaseEmArquivo(ContextoDados contexto)
         {
-            get
-            {
-                return this.nomeArquivo;
-            }
-            set
-            {
-                this.nomeArquivo = value;
-            }
-        }
-
-        public RepositorioBaseEmArquivo()
-        {
-            NomeArquivo = nomeArquivo;
-            if (File.Exists(NomeArquivo))
-                CarregarRegistrosDoArquivo();
-        }
-
-        public virtual void Inserir(TEntidade registro)
-        {
-            contadorRegistros++;
-            registro.id = contadorRegistros;
-            listaRegistros.Add(registro);
-
-            GravarRegistrosEmArquivo();
-        }
-
-        public virtual void Editar(TEntidade registroAtualizado)
-        {
-            TEntidade registroSelecionado = SelecionarPorId(registroAtualizado.id);
-
-            registroSelecionado.AtualizarInformacoes(registroAtualizado);
-
-            GravarRegistrosEmArquivo();
-        }
-
-        public virtual void Excluir(TEntidade registroSelecionado)
-        {
-            listaRegistros.Remove(registroSelecionado);
-
-            GravarRegistrosEmArquivo();
-        }
-
-        public virtual TEntidade SelecionarPorId(int id)
-        {
-            TEntidade registro = listaRegistros.FirstOrDefault(x => x.id == id);
-
-            return registro;
-        }
-
-        public virtual List<TEntidade> SelecionarTodos()
-        {
-            return listaRegistros;
-        }
-
-        protected virtual void CarregarRegistrosDoArquivo()
-        {
-            BinaryFormatter serializador = new BinaryFormatter();
-
-            byte[] registroEmBytes = File.ReadAllBytes(NomeArquivo);
-
-            MemoryStream registroStream = new MemoryStream(registroEmBytes);
-
-            this.listaRegistros = (List<TEntidade>)serializador.Deserialize(registroStream);
+            contextoDados = contexto;
 
             AtualizarContador();
         }
-
-        protected virtual void AtualizarContador()
+        
+        public void Inserir(TEntidade novoRegistro)
         {
-            contadorRegistros = listaRegistros.Max(x => x.id);
+            List<TEntidade> registros = ObterRegistros();
+
+            contador++;
+            novoRegistro.id = contador;
+            registros.Add(novoRegistro);
+
+            contextoDados.GravarEmArquivoJson();
         }
 
-        protected virtual void GravarRegistrosEmArquivo()
+        public void Editar(int id, TEntidade registroAtualizado)
         {
-            BinaryFormatter serializador = new BinaryFormatter();
+            TEntidade registroSelecionado = SelecionarPorId(id);
 
-            MemoryStream registroStream = new MemoryStream();
+            registroSelecionado.AtualizarInformacoes(registroAtualizado);
 
-            serializador.Serialize(registroStream, listaRegistros);
-
-            byte[] registrosEmBytes = registroStream.ToArray();
-
-            File.WriteAllBytes(NomeArquivo, registrosEmBytes);
+            contextoDados.GravarEmArquivoJson();
         }
+
+        public void Excluir(TEntidade registroSelecionado)
+        {
+            List<TEntidade> registros = ObterRegistros();
+
+            registros.Remove(registroSelecionado);
+
+            contextoDados.GravarEmArquivoJson();
+        }
+
+        public TEntidade SelecionarPorId(int id)
+        {
+            List<TEntidade> registros = ObterRegistros();
+
+            return registros.FirstOrDefault(x => x.id == id);
+        }
+
+        public List<TEntidade> SelecionarTodos()
+        {
+            return ObterRegistros();
+        }
+
+        private void AtualizarContador()
+        {
+            if (ObterRegistros().Count > 0)
+                contador = ObterRegistros().Max(x => x.id);
+        }      
     }
-
 }
 

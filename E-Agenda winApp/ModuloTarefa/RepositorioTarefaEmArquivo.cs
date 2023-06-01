@@ -1,107 +1,38 @@
-﻿using System.Runtime.Serialization.Formatters.Binary;
+﻿using E_Agenda_winApp.Compartilhado;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace E_Agenda_winApp.ModuloTarefa
 {
-    public class RepositorioTarefaEmArquivo : IRepositorioTarefa
+    public class RepositorioTarefaEmArquivo : RepositorioBaseEmArquivo<Tarefa>, IRepositorioTarefa
     {
-        private static int contador;
-
-        private List<Tarefa> tarefas = new List<Tarefa>();
-
-        private const string NOME_ARQUIVO_TAREFAS = "C:\\temp\\tarefas\\dados-tarefas.bin";
-
-        public RepositorioTarefaEmArquivo()
+        public RepositorioTarefaEmArquivo(ContextoDados contexto) : base(contexto)
         {
-            if (File.Exists(NOME_ARQUIVO_TAREFAS))
-                CarregarTarefasDoArquivo();
-        }
-        
-        public void Inserir(Tarefa novaTarefa)
-        {
-            contador++;
-            novaTarefa.id = contador;
-            tarefas.Add(novaTarefa);
-
-            GravarTarefasEmArquivo();
-        }
-      
-        public void Editar(int id, Tarefa tarefa)
-        {
-            Tarefa tarefaSelecionada = SelecionarPorId(id);
-
-            tarefaSelecionada.AtualizarInformacoes(tarefa);
-
-            GravarTarefasEmArquivo();
         }
 
-        public void Excluir(Tarefa tarefaSelecionada)
+        protected override List<Tarefa> ObterRegistros()
         {
-            tarefas.Remove(tarefaSelecionada);
-
-            GravarTarefasEmArquivo();
+            return contextoDados.tarefas;
         }
 
         public List<Tarefa> SelecionarConcluidas()
         {
-            return tarefas
+            return ObterRegistros()
                     .Where(x => x.percentualConcluido == 100)
                     .ToList();
         }
 
         public List<Tarefa> SelecionarPendentes()
         {
-            return tarefas
+            return ObterRegistros()
                     .Where(x => x.percentualConcluido < 100)
                     .ToList();
         }
-
-        public Tarefa SelecionarPorId(int id)
-        {
-            Tarefa tarefa = tarefas.FirstOrDefault(x => x.id == id);
-
-            return tarefa;
-        }
-
+        
         public List<Tarefa> SelecionarTodosOrdenadosPorPrioridade()
         {
-            return tarefas
+            return ObterRegistros()
                     .OrderByDescending(x => x.prioridade)
                     .ToList();
-        }
-        public List<Tarefa> SelecionarTodos()
-        {
-            return tarefas;
-        }
-
-        private void CarregarTarefasDoArquivo()
-        {
-            BinaryFormatter serializador = new BinaryFormatter();
-
-            byte[] tarefaEmBytes = File.ReadAllBytes(NOME_ARQUIVO_TAREFAS);
-
-            MemoryStream tarefaStream = new MemoryStream(tarefaEmBytes);
-
-            tarefas = (List<Tarefa>)serializador.Deserialize(tarefaStream);
-
-            AtualizarContador();
-        }
-
-        private void AtualizarContador()
-        {
-            contador = tarefas.Max(x => x.id);
-        }
-
-        private void GravarTarefasEmArquivo()
-        {
-            BinaryFormatter serializador = new BinaryFormatter();
-
-            MemoryStream tarefaStream = new MemoryStream();
-
-            serializador.Serialize(tarefaStream, tarefas);
-
-            byte[] tarefasEmBytes = tarefaStream.ToArray();
-
-            File.WriteAllBytes(NOME_ARQUIVO_TAREFAS, tarefasEmBytes);
-        }     
+        }        
     }
 }

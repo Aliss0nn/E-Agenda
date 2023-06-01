@@ -1,4 +1,5 @@
-﻿using System;
+﻿using E_Agenda_winApp.Compartilhado;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,15 +7,10 @@ using System.Threading.Tasks;
 
 namespace E_Agenda_winApp.ModuloTarefa
 {
-    public interface IRepositorioTarefa
-    {
-        void Inserir(Tarefa novaTarefa);
-        void Editar(int id, Tarefa tarefa);
-        void Excluir(Tarefa tarefaSelecionada);
+    public interface IRepositorioTarefa : IRepositorioBase<Tarefa>
+    {     
         List<Tarefa> SelecionarConcluidas();
-        List<Tarefa> SelecionarPendentes();
-        Tarefa SelecionarPorId(int id);
-        List<Tarefa> SelecionarTodosOrdenadosPorPrioridade();
-        List<Tarefa> SelecionarTodos();
+        List<Tarefa> SelecionarPendentes();   
+        List<Tarefa> SelecionarTodosOrdenadosPorPrioridade();     
     }
 }

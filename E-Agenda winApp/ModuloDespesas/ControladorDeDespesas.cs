@@ -67,7 +67,7 @@ namespace E_Agenda_winApp.ModuloDespesasECategorias
             {
                 despesa = telaDespesas.Despesas;
 
-                repositorioDespesa.Editar(despesa);
+                repositorioDespesa.Editar(despesa.id, despesa);
 
                 CarregarDespesas();
             }

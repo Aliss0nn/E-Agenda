@@ -1,5 +1,4 @@
 ﻿using E_Agenda_winApp.Compartilhado;
-using E_Agenda_winApp.ModuloCompromisso;
 
 namespace E_Agenda_winApp.ModuloTarefa
 {

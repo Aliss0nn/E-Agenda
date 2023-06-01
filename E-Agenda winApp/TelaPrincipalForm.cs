@@ -11,11 +11,13 @@ namespace E_Agenda_winApp
     public partial class TelaPrincipalForm : Form
     {
         private ControladorBase controlador;
-        private IRepositorioTarefa repositorioTarefas = new RepositorioTarefaEmArquivo();    
-        private IRepositorioContato repositorio = new RepositorioContatoEmArquivo();
-        private IRepositorioCategorias repositorioCategorias = new RepositorioCategoriaEmArquivo();     
-        private IRepositorioCompromisso repositorioCompromisso = new RepositorioCompromissoEmArquivo();
-        private IRepositorioDespesas repositorioDespesa = new RepositorioDespesasEmArquivo();
+        static ContextoDados contextoDados = new ContextoDados(carregarDados: true);
+
+        private IRepositorioTarefa repositorioTarefas = new RepositorioTarefaEmArquivo(contextoDados);    
+        private IRepositorioContato repositorio = new RepositorioContatoEmArquivo(contextoDados);
+        private IRepositorioCategorias repositorioCategorias = new RepositorioCategoriaEmArquivo(contextoDados);     
+        private IRepositorioCompromisso repositorioCompromisso = new RepositorioCompromissoEmArquivo(contextoDados);
+        private IRepositorioDespesas repositorioDespesa = new RepositorioDespesasEmArquivo(contextoDados);
         
         private static TelaPrincipalForm telaPrincipal;
         private TabelaDespesaControl tabelaDespesa;

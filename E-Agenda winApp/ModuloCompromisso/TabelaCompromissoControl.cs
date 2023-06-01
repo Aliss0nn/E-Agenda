@@ -54,7 +54,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
                 {
                     compromisso.contato = new Contato("teste","teste","teste","teste","teste");
 
-                    gridCompromisso.Rows.Add(compromisso.id, compromisso.assunto, compromisso.contato.nome, compromisso.data);
+                    gridCompromisso.Rows.Add(compromisso.id, compromisso.assunto, compromisso.contato?.nome, compromisso.data);
                 }
             }
         }

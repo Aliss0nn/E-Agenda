@@ -1,11 +1,5 @@
 ﻿using E_Agenda_winApp.Compartilhado;
-using E_Agenda_winApp.ModuloCompromisso;
 using E_Agenda_winApp.ModuloDespesasECategorias;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace E_Agenda_winApp.ModuloCategorias
 {
@@ -63,7 +57,7 @@ namespace E_Agenda_winApp.ModuloCategorias
             {
                 categoria = telaCategorias.Categorias;
 
-                repositorioCategorias.Editar(categoria);
+                repositorioCategorias.Editar(categoria.id, categoria);
 
                 CarregarCategorias();
             }

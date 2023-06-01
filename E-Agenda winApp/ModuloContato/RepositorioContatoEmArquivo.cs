@@ -7,94 +7,20 @@ namespace E_Agenda_winApp.ModuloContato
 {
     public class RepositorioContatoEmArquivo : RepositorioBaseEmArquivo<Contato>, IRepositorioContato
     {
-        private static int contador;
-
-        private List<Contato> contatos = new List<Contato>();
-
-        private const string NOME_ARQUIVO_Contatos = "C:\\temp\\contatos\\dados-contatos.bin";
-
-        public RepositorioContatoEmArquivo()
+        public RepositorioContatoEmArquivo(ContextoDados contexto) : base(contexto)
         {
-            if (File.Exists(NOME_ARQUIVO_Contatos))
-                CarregarContatosDoArquivo();
-        }
-    
-        public void Inserir(Contato novoContato)
-        {
-            contador++;
-            novoContato.id = contador;
-            contatos.Add(novoContato);
 
-            GravarContatosDoArquivo();
         }
-        
+
+        protected override List<Contato> ObterRegistros()
+        {
+            return contextoDados.contatos;
+        }
+
+                
         public void Editar(int id, Contato contato)
         {
-            Contato contatoSelecionado = SelecionarPorId(id);
-
-            contatoSelecionado.AtualizarInformacoes(contato);
-
-            GravarContatosDoArquivo();
+            throw new NotImplementedException();
         }
-
-        public void Excluir(Contato ContatoSelecionado)
-        {
-            contatos.Remove(ContatoSelecionado);
-
-            GravarContatosDoArquivo();
-        }
-        public List<Contato> SelecionarTodos()
-        {
-            return contatos;
-        }
-
-        public Contato SelecionarPorId(int id)
-        {
-            Contato contato = contatos.FirstOrDefault(x => x.id == id);
-
-            return contato;
-        }
-        private void GravarContatosDoArquivo()
-        {
-            //BinaryFormatter serializador = new BinaryFormatter();
-
-            //MemoryStream contatosStream = new MemoryStream();
-
-            //serializador.Serialize(contatosStream, contatos);
-
-            //byte[] contatosBytes = contatosStream.ToArray();
-
-            //File.WriteAllBytes(NOME_ARQUIVO_Contatos,contatosBytes);
-
-            JsonSerializerOptions opcoes = new JsonSerializerOptions();
-            opcoes.IncludeFields = true;
-            opcoes.WriteIndented = true;
-
-            string contato = JsonSerializer.Serialize(contatos,opcoes);
-            File.WriteAllText(NOME_ARQUIVO_Contatos,contato);
-        }
-        private void CarregarContatosDoArquivo()
-        {          
-            JsonSerializerOptions opcao = new JsonSerializerOptions();
-            opcao.IncludeFields = true;
-           
-            string contatosJson = File.ReadAllText(NOME_ARQUIVO_Contatos);
-            contatos = JsonSerializer.Deserialize<List<Contato>>(contatosJson, opcao);
-
-            //BinaryFormatter serializador = new BinaryFormatter();
-
-            //byte[] contatosBytes = File.ReadAllBytes(NOME_ARQUIVO_Contatos); 
-
-            //MemoryStream contatosStream = new MemoryStream(contatosBytes);
-
-            //contatos = (List<Contato>)serializador.Deserialize(contatosStream);
-
-            //AtualizarContador();          
-        }
-
-        private void AtualizarContador()
-        {
-           contador = contatos.Max(x => x.id);
-        }      
     }
 }

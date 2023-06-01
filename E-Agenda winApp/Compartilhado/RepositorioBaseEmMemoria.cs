@@ -47,13 +47,10 @@
 
             return null;
         }
-                    
-
+        
         public virtual List<TEntidade> SelecionarTodos()
         {
             return listaRegistros.OrderByDescending(x => x.id).ToList();
         }
-
-
     }
 }
