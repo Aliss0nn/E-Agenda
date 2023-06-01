@@ -1,8 +1,11 @@
-﻿using System.Runtime.Serialization.Formatters.Binary;
+﻿using E_Agenda_winApp.Compartilhado;
+using E_Agenda_winApp.ModuloCompromisso;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Json;
 
 namespace E_Agenda_winApp.ModuloContato
 {
-    public class RepositorioContatoEmArquivo : IRepositorioContato
+    public class RepositorioContatoEmArquivo : RepositorioBaseEmArquivo<Contato>, IRepositorioContato
     {
         private static int contador;
 
@@ -53,27 +56,40 @@ namespace E_Agenda_winApp.ModuloContato
         }
         private void GravarContatosDoArquivo()
         {
-            BinaryFormatter serializador = new BinaryFormatter();
+            //BinaryFormatter serializador = new BinaryFormatter();
 
-            MemoryStream contatosStream = new MemoryStream();
+            //MemoryStream contatosStream = new MemoryStream();
 
-            serializador.Serialize(contatosStream, contatos);
+            //serializador.Serialize(contatosStream, contatos);
 
-            byte[] contatosBytes = contatosStream.ToArray();
+            //byte[] contatosBytes = contatosStream.ToArray();
 
-            File.WriteAllBytes(NOME_ARQUIVO_Contatos,contatosBytes);
+            //File.WriteAllBytes(NOME_ARQUIVO_Contatos,contatosBytes);
+
+            JsonSerializerOptions opcoes = new JsonSerializerOptions();
+            opcoes.IncludeFields = true;
+            opcoes.WriteIndented = true;
+
+            string contato = JsonSerializer.Serialize(contatos,opcoes);
+            File.WriteAllText(NOME_ARQUIVO_Contatos,contato);
         }
         private void CarregarContatosDoArquivo()
-        {
-            BinaryFormatter serializador = new BinaryFormatter();
+        {          
+            JsonSerializerOptions opcao = new JsonSerializerOptions();
+            opcao.IncludeFields = true;
+           
+            string contatosJson = File.ReadAllText(NOME_ARQUIVO_Contatos);
+            contatos = JsonSerializer.Deserialize<List<Contato>>(contatosJson, opcao);
 
-            byte[] contatosBytes = File.ReadAllBytes(NOME_ARQUIVO_Contatos); 
+            //BinaryFormatter serializador = new BinaryFormatter();
 
-            MemoryStream contatosStream = new MemoryStream(contatosBytes);
+            //byte[] contatosBytes = File.ReadAllBytes(NOME_ARQUIVO_Contatos); 
 
-            contatos = (List<Contato>)serializador.Deserialize(contatosStream);
+            //MemoryStream contatosStream = new MemoryStream(contatosBytes);
 
-            AtualizarContador();          
+            //contatos = (List<Contato>)serializador.Deserialize(contatosStream);
+
+            //AtualizarContador();          
         }
 
         private void AtualizarContador()

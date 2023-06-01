@@ -3,7 +3,7 @@ using E_Agenda_winApp.ModuloContato;
 
 namespace E_Agenda_winApp.ModuloCategorias
 {
-    public class RepositorioCategoriasEmMemoria 
+    public class RepositorioCategoriasEmMemoria : RepositorioBaseEmMemoria<Categorias>,IRepositorioBase<Categorias>
     {
         List<Categorias> categorias = new List<Categorias>();
         static int contador;

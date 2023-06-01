@@ -10,12 +10,14 @@ namespace E_Agenda_winApp.ModuloCompromisso
          private TabelaCompromissoControl tabelaCompromisso;      
          private IRepositorioContato repositorioContato;
 
-        public ControladorDeCompromisso(IRepositorioCompromisso repositorioCompromisso, IRepositorioContato repositorioContato)
+        public ControladorDeCompromisso(IRepositorioCompromisso repositorioCompromisso, 
+            TabelaCompromissoControl tabelaCompromisso,
+            IRepositorioContato repositorioContato)
         {
             this.repositorioCompromisso = repositorioCompromisso;
+            this.tabelaCompromisso = tabelaCompromisso;
             this.repositorioContato = repositorioContato;
         }
-
 
         #region tooltips
         public override string ToolTipInserir { get { return "Inserir novo Compromisso"; } }
@@ -30,7 +32,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
         #endregion tooltips
 
         public override bool FiltrarHabilitado => true;
-
+       
         public override void Inserir()
         {         
             TelaCompromisso telaCompromisso = new TelaCompromisso();
@@ -136,7 +138,6 @@ namespace E_Agenda_winApp.ModuloCompromisso
         {
             return "Cadastro de Compromissos";
         }
-
         public void Filtrar()
         {
             if (tabelaCompromisso == null)
@@ -168,9 +169,8 @@ namespace E_Agenda_winApp.ModuloCompromisso
                 }
 
                 CarregarCompromissos(compromissos);
-
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {compromissos.Count} compromissos");
             }
-        }       
+        }
+
     }
 }

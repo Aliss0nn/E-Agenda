@@ -2,7 +2,7 @@
 
 namespace E_Agenda_winApp.ModuloCompromisso
 {
-    public class RepositorioCompromissoEmMemoria : RepositorioBase<Compromisso>
+    public class RepositorioCompromissoEmMemoria : RepositorioBaseEmMemoria<Compromisso>
     {
         List<Compromisso> compromissos = new List<Compromisso>();
         private int contador;

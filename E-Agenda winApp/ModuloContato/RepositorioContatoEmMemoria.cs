@@ -3,7 +3,7 @@ using E_Agenda_winApp.ModuloTarefa;
 
 namespace E_Agenda_winApp.ModuloContato
 {
-    public class RepositorioContatoEmMemoria 
+    public class RepositorioContatoEmMemoria : RepositorioBaseEmMemoria<Contato>
     {
         List<Contato> contatos = new List<Contato>();
 

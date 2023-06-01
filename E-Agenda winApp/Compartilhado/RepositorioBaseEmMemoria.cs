@@ -1,6 +1,6 @@
 ﻿namespace E_Agenda_winApp.Compartilhado
 {
-    public abstract class RepositorioBase<TEntidade>
+    public abstract class RepositorioBaseEmMemoria<TEntidade>
         where TEntidade : EntidadeBase<TEntidade>
     {
         protected List<TEntidade> listaRegistros;

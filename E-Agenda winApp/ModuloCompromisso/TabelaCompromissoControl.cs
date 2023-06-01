@@ -1,4 +1,5 @@
 ﻿using E_Agenda_winApp.Compartilhado;
+using E_Agenda_winApp.ModuloContato;
 
 namespace E_Agenda_winApp.ModuloCompromisso
 {
@@ -49,7 +50,12 @@ namespace E_Agenda_winApp.ModuloCompromisso
 
             foreach (Compromisso compromisso in compromissos)
             {
-                gridCompromisso.Rows.Add(compromisso.id,compromisso.assunto,compromisso.data);
+                if (compromisso.contato == null)
+                {
+                    compromisso.contato = new Contato("teste","teste","teste","teste","teste");
+
+                    gridCompromisso.Rows.Add(compromisso.id, compromisso.assunto, compromisso.contato.nome, compromisso.data);
+                }
             }
         }
 

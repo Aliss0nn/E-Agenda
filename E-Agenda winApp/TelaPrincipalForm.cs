@@ -11,17 +11,16 @@ namespace E_Agenda_winApp
     public partial class TelaPrincipalForm : Form
     {
         private ControladorBase controlador;
-        private IRepositorioTarefa repositorioTarefas = new RepositorioTarefaEmArquivo();
-        private IRepositorioContato repositorioContato = new RepositorioContatoEmArquivo();
-        private IRepositorioCategorias repositorioCategorias = new RepositorioCategoriaEmArquivo();
+        private IRepositorioTarefa repositorioTarefas = new RepositorioTarefaEmArquivo();    
+        private IRepositorioContato repositorio = new RepositorioContatoEmArquivo();
+        private IRepositorioCategorias repositorioCategorias = new RepositorioCategoriaEmArquivo();     
         private IRepositorioCompromisso repositorioCompromisso = new RepositorioCompromissoEmArquivo();
-
         private IRepositorioDespesas repositorioDespesa = new RepositorioDespesasEmArquivo();
+        
         private static TelaPrincipalForm telaPrincipal;
         private TabelaDespesaControl tabelaDespesa;
+        private TabelaCompromissoControl tabelaCompromisso;
         
-
-
         public TelaPrincipalForm()
         {        
             InitializeComponent();
@@ -45,7 +44,7 @@ namespace E_Agenda_winApp
 
         private void contatosMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorDeContato(repositorioContato);
+            controlador = new ControladorDeContato(repositorio);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -105,7 +104,7 @@ namespace E_Agenda_winApp
 
         private void compromissosMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorDeCompromisso(repositorioCompromisso,repositorioContato);
+            controlador = new ControladorDeCompromisso(repositorioCompromisso,tabelaCompromisso,repositorio);
 
             ConfigurarTelaPrincipal(controlador);
         }

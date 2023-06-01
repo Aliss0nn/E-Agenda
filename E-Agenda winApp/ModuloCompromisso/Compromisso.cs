@@ -14,7 +14,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
         public Contato contato;
         
 
-        public Compromisso(string assunto, string local, DateTime data, DateTime horaInicio, DateTime horaFinal, Contato contato)
+        public Compromisso(Contato contato,string assunto, string local, DateTime data, DateTime horaInicio, DateTime horaFinal)
         {
             this.assunto = assunto;
             this.local = local;

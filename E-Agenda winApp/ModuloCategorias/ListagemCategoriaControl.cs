@@ -1,20 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace E_Agenda_winApp.ModuloCategorias
+﻿namespace E_Agenda_winApp.ModuloCategorias
 {
     public partial class ListagemCategoriaControl : UserControl
     {
         public ListagemCategoriaControl()
         {
             InitializeComponent();
+        }
+        public void AtualizarRegistros(List<Categorias> categorias)
+        {
+            listCategorias.Items.Clear();
+
+            foreach (Categorias item in categorias)
+            {
+                listCategorias.Items.Add(item);
+            }
+
+        }
+
+        public Categorias ObterCategoriaSelecionada()
+        {
+            return (Categorias)listCategorias.SelectedItem;
         }
     }
 }

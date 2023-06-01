@@ -61,7 +61,7 @@ namespace E_Agenda_winApp.ModuloCompromisso
 
             Contato contato = contatos.Find(x => x.nome == CbContatos.SelectedItem);
 
-            compromisso = new Compromisso(assunto, local, data, horaInicial, horaFinal, contato);
+            compromisso = new Compromisso(contato,assunto, local, data, horaInicial, horaFinal);
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

@@ -1,9 +1,8 @@
 ﻿using E_Agenda_winApp.Compartilhado;
-using E_Agenda_winApp.ModuloContato;
 
 namespace E_Agenda_winApp.ModuloTarefa
 {
-    public class RepositorioTarefasEmMemoria : RepositorioBase<Tarefa>,IRepositorioTarefa
+    public class RepositorioTarefasEmMemoria : RepositorioBaseEmMemoria<Tarefa>,IRepositorioTarefa
     {
         List<Tarefa> tarefas = new List<Tarefa>();       
         public int contador;

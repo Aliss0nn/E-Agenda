@@ -7,12 +7,12 @@ namespace E_Agenda_winApp.ModuloDespesasECategorias
     public class ControladorDeDespesas : ControladorBase
     {
         private TabelaDespesaControl tabelaDespesa;
-        private IRepositorioDespesas repositorioDespesa;
-        private IRepositorioCategorias repositorioCategorias;
+        private IRepositorioBase<Despesas> repositorioDespesa;
+        private IRepositorioBase<Categorias> repositorioCategorias;
       
         public ControladorDeDespesas(TabelaDespesaControl tabelaDespesa,
-            IRepositorioDespesas repositorioDespesa,
-            IRepositorioCategorias repositorioCategorias)
+            IRepositorioBase<Despesas> repositorioDespesa,
+            IRepositorioBase<Categorias> repositorioCategorias)
         {
             this.tabelaDespesa = tabelaDespesa;
             this.repositorioDespesa = repositorioDespesa;
@@ -67,7 +67,7 @@ namespace E_Agenda_winApp.ModuloDespesasECategorias
             {
                 despesa = telaDespesas.Despesas;
 
-                repositorioDespesa.Editar(despesa.id,despesa);
+                repositorioDespesa.Editar(despesa);
 
                 CarregarDespesas();
             }

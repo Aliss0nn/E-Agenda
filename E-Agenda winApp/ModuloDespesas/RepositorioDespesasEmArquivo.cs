@@ -1,17 +1,19 @@
-﻿using E_Agenda_winApp.ModuloContato;
+﻿using E_Agenda_winApp.Compartilhado;
+using E_Agenda_winApp.ModuloCategorias;
+using E_Agenda_winApp.ModuloContato;
 using E_Agenda_winApp.ModuloDespesasECategorias;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace E_Agenda_winApp.ModuloDespesas
 {
-    public class RepositorioDespesasEmArquivo : IRepositorioDespesas
+    public class RepositorioDespesasEmArquivo : RepositorioBaseEmArquivo<Despesas>, IRepositorioDespesas
     {
         private static int contador;
 
         private List<Despesas> despesas = new List<Despesas>();
 
         private const string NOME_ARQUIVO_DESPESAS = "C:\\temp\\despesas\\dados-despesas.bin";
-
+      
         public RepositorioDespesasEmArquivo()
         {
             if (File.Exists(NOME_ARQUIVO_DESPESAS))
@@ -85,5 +87,30 @@ namespace E_Agenda_winApp.ModuloDespesas
 
             File.WriteAllBytes(NOME_ARQUIVO_DESPESAS, despesasBytes);
         }
+
+        public void Editar(Categorias registro)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Excluir(Categorias registro)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Inserir(Categorias registro)
+        {
+            throw new NotImplementedException();
+        }
+
+        //Categorias IRepositorioBase<Categorias>.SelecionarPorId(int id)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //List<Categorias> IRepositorioBase<Categorias>.SelecionarTodos()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

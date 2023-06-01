@@ -1,9 +1,10 @@
-﻿using E_Agenda_winApp.ModuloContato;
+﻿using E_Agenda_winApp.Compartilhado;
+using E_Agenda_winApp.ModuloContato;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace E_Agenda_winApp.ModuloCompromisso
 {
-    public class RepositorioCompromissoEmArquivo : IRepositorioCompromisso
+    public class RepositorioCompromissoEmArquivo : RepositorioBaseEmArquivo<Compromisso>, IRepositorioCompromisso
     {
         private static int contador;
 
@@ -94,6 +95,6 @@ namespace E_Agenda_winApp.ModuloCompromisso
                 .Where(x => x.data > dataInicio)
                 .Where(x => x.data < dataFinal)
                 .ToList(); ;
-        }
+        }    
     }
 }

@@ -1,13 +1,10 @@
-﻿using E_Agenda_winApp.ModuloContato;
+﻿using E_Agenda_winApp.Compartilhado;
+using E_Agenda_winApp.ModuloContato;
 
 namespace E_Agenda_winApp.ModuloCategorias
 {
-    public interface IRepositorioCategorias
+    public interface IRepositorioCategorias : IRepositorioBase<Categorias>
     {
-        void Inserir(Categorias novaCategoria);
-        void Editar(int id, Categorias categoria);
-        void Excluir(Categorias categoriaSelecionada);
-        Categorias SelecionarPorId(int id);
-        List<Categorias> SelecionarTodos();
+        public void AtualizarCategorias(List<Categorias> categorias);
     }
 }
