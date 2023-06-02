@@ -1,11 +1,5 @@
 ﻿using E_Agenda_winApp.Compartilhado;
 using E_Agenda_winApp.ModuloCategorias;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace E_Agenda_winApp.ModuloDespesasECategorias
 {
